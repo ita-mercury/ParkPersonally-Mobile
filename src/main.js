@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import store from './store/index'
 import { XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem } from 'vux'
 
 Vue.component('x-img', XImg)
@@ -23,8 +24,8 @@ Vue.use(VueAxios, axios)
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
+  store,
+  axios,
+  router: router,
+  render: h => h(App)
+}).$mount('#app')

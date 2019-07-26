@@ -1,5 +1,6 @@
 <template>
   <div>
+    <x-header :left-options="{showBack: false}"><strong>ParkPersonally</strong></x-header>
     <tabbar>
       <tabbar-item>
         <img slot="icon" src="../assets/image/item1.png">
