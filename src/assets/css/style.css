@@ -10,6 +10,39 @@
   text-align: center;
 }
 
+.personal-header-img{
+  width: 7rem;
+  border-radius: 7rem;
+  margin: 0 auto;
+}
+
 body{
   margin: 0;
+}
+
+
+a{
+  text-decoration: none;
+}
+
+.weui-tabbar .weui-tabbar__label{
+  line-height: 0.8 !important;
+}
+
+.customer-content{
+  height: 85%;
+  width: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+/*.customer-content .weui-label{*/
+/*  width: 5em !important;*/
+/*}*/
+
+.customer-content .img-div{
+  margin-top: 25px;
+  width: auto;
+  text-align: center;
 }

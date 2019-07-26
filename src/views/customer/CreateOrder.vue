@@ -1,8 +1,7 @@
 <template>
   <div>
-    <x-header :left-options="{showBack: false}"><strong>ParkPersonally</strong></x-header>
     <div>
-      <group >
+      <group>
         <x-input title="姓名" name="username" placeholder="请输入姓名" is-type="china-name"></x-input>
       </group>
 
@@ -16,16 +15,6 @@
 
       <x-button style="margin-top: 30px; width: 50%" plain type="primary">创建订单</x-button>
     </div>
-    <tabbar>
-      <tabbar-item show-dot>
-        <img slot="icon" src="../assets/image/item2.png">
-        <span slot="label">想要停车</span>
-      </tabbar-item>
-      <tabbar-item badge="2">
-        <img slot="icon" src="../assets/image/item4.png">
-        <span slot="label">个人中心</span>
-      </tabbar-item>
-    </tabbar>
   </div>
 </template>
 

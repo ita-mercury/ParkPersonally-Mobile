@@ -1,0 +1,39 @@
+<template>
+  <div>
+    <x-header :left-options="{showBack: false}"><strong>ParkPersonally</strong></x-header>
+    <div class="customer-content">
+      <router-view></router-view>
+    </div>
+    <tabbar>
+      <tabbar-item show-dot link="/createOrder">
+        <img slot="icon" src="../../assets/image/item2.png">
+        <span slot="label">想要停车</span>
+      </tabbar-item>
+      <tabbar-item badge="1">
+        <img slot="icon" src="../../assets/image/item3.png">
+        <span slot="label">我的订单</span>
+      </tabbar-item>
+      <tabbar-item badge="2" link="/">
+        <img slot="icon" src="../../assets/image/item4.png">
+        <span slot="label">个人中心</span>
+      </tabbar-item>
+    </tabbar>
+  </div>
+</template>
+
+<script>
+
+export default {
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+
+  }
+}
+</script>
+
+<style>
+</style>
