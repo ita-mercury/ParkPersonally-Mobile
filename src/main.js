@@ -6,7 +6,7 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import store from './store/index'
-import { XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem } from 'vux'
+import { XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell } from 'vux'
 
 Vue.component('x-img', XImg)
 Vue.component('x-header', XHeader)
@@ -17,6 +17,7 @@ Vue.component('x-button', XButton)
 Vue.component('actionsheet', Actionsheet)
 Vue.component('tabbar', Tabbar)
 Vue.component('tabbar-item', TabbarItem)
+Vue.component('cell', Cell)
 
 Vue.config.productionTip = false
 
