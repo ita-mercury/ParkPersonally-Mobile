@@ -1,0 +1,15 @@
+.test-img{
+  width: 9rem;
+  border-radius: 9rem;
+  margin: 0 auto;
+}
+
+.img-div{
+  margin-top: 50px;
+  width: auto;
+  text-align: center;
+}
+
+body{
+  margin: 0;
+}
