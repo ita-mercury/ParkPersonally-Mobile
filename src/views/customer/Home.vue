@@ -18,7 +18,7 @@
         <img slot="icon" src="../../assets/image/item5.png">
         <span slot="label">我的消息</span>
       </tabbar-item>
-      <tabbar-item badge="2" link="/">
+      <tabbar-item badge="2" link="/personalCenter">
         <img slot="icon" src="../../assets/image/item4.png">
         <span slot="label">个人中心</span>
       </tabbar-item>

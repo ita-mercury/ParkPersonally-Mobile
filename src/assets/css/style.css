@@ -63,3 +63,27 @@ a{
 .temp-div{
   height: 10%
 }
+
+.login-action-div .weui-btn_plain-primary {
+  color: #35495e;
+  border: 1px solid #35495e;
+}
+
+.weui-btn_plain-primary:not(.weui-btn_plain-disabled):active{
+  color: blue !important;
+  border-color: blue !important;
+}
+
+.login-action-body{
+  text-align: center;
+}
+
+.parking-logo-img{
+  margin-top: 20%;
+  width: 8em;
+}
+
+.weui-btn_plain-default{
+  color: #35495e !important;
+  border: 1px solid #35495e !important;
+}

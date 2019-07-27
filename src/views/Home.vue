@@ -37,7 +37,4 @@ export default {
 </script>
 
 <style>
-  .overwrite-title-demo {
-
-  }
 </style>

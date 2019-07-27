@@ -1,26 +1,18 @@
 <template>
-  <div>
-    <x-header :left-options="{showBack: false}"><strong>ParkPersonally</strong></x-header>
-    <div class="img-div">
-      <x-img class="test-img" :src="imgSrc" :webp-src="`${imgSrc}?type=webp`"/>
-    </div>
-    <div style="width:60%;margin:15px auto; ">
-      <h2 style="text-align: center">用户登录</h2>
-    </div>
-    <div style="width: 60%; margin: 15px auto; ">
+  <div style="text-align: center">
+    <x-header :left-options="{backText: ''}"><strong>ParkPersonally</strong></x-header>
+    <img class="parking-logo-img" :src="parkLogoImg"/>
+    <div style="width: 80%; margin: 10% auto; ">
       <group label-width="5em">
-        <x-input title="用户名：" v-model="user.email"  name="username" placeholder="请输入用户名" ></x-input>
+        <x-input title="用户名：" v-model="user.email"  name="email" placeholder="请输入用户名" ></x-input>
       </group>
       <group label-width="5em">
         <x-input title="密码：" v-model="user.password" name="password" type="password" placeholder="请输入密码"></x-input>
       </group>
-      <group>
-        <checklist required :options="commonList" v-model="checklist" :max="1" ></checklist>
-      </group>
-      <x-button style="margin-top: 20px" plain type="primary" @click.native="submit">login</x-button>
+      <x-button style="margin-top: 30px;" plain @click.native="submit">login</x-button>
       <br>
       <div style="text-align: center">
-        <router-link to="/register" style="color:#55ad2f;">没有账号？去注册</router-link>
+        <router-link to="/register" style="color:#35495e;">没有账号？去注册</router-link>
       </div>
 
     </div>
@@ -42,8 +34,8 @@ export default {
       },
       imgSrc: 'https://i.loli.net/2017/08/21/599a521472424.jpg',
       showMenus: false,
-      commonList: ['客户', '停车员'],
-      checklist: []
+      checklist: [],
+      parkLogoImg: require('../../assets/image/parkingLogo.png')
     }
   },
   methods: {
@@ -54,7 +46,16 @@ export default {
       // }).catch((response) => {
       //   console.log(response)
       // })
-      this.$router.push({name: 'personalCenter'})
+      this.$vux.loading.show({
+        text: 'Loading'
+      })
+      setTimeout(() => {
+        this.$vux.loading.hide()
+        this.$router.push({name: 'personalCenter'})
+      }, 500)
+    },
+    clearInput () {
+      alert('asd')
     }
   }
 }
