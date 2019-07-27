@@ -9,7 +9,7 @@
         <img slot="icon" src="../../assets/image/item2.png">
         <span slot="label">想要停车</span>
       </tabbar-item>
-      <tabbar-item badge="1">
+      <tabbar-item badge="1" link="/order">
         <img slot="icon" src="../../assets/image/item3.png">
         <span slot="label">我的订单</span>
       </tabbar-item>
