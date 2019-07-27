@@ -13,7 +13,7 @@
         <img slot="icon" src="../../assets/image/item2.png">
         <span slot="label">取车</span>
       </tabbar-item>
-      <tabbar-item badge="1">
+      <tabbar-item badge="1" link="/HistoryOrder">
         <img slot="icon" src="../../assets/image/item3.png">
         <span slot="label">历史订单</span>
       </tabbar-item>

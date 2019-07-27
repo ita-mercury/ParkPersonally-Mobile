@@ -10,8 +10,11 @@ import ParkOrder from '../views/parkingboy/ParkOrder'
 import Order from '../views/customer/Order'
 import FetchOrder from '../views/parkingboy/FetchOrder'
 import FetchOrderDetail from '../views/parkingboy/FetchOrderDetail'
+import HistoryOrder from '../views/parkingboy/HistoryOrder'
+import HistoryOrderDetail from '../views/parkingboy/HistoryOrderDetail'
 import Map from '../views/Map'
 import MyMessage from '../views/customer/MyMessage'
+
 
 Vue.use(Router)
 
@@ -46,8 +49,10 @@ export default new Router({
       children: [
         {path: '/parkOrder', name: 'ParkOrder', component: ParkOrder},
         {path: '/FetchOrder', name: 'FetchOrder', component: FetchOrder},
-        {path: '/FetchOrderDetail', name: 'FetchOrderDetail', component: FetchOrderDetail}
+        {path: '/FetchOrderDetail', name: 'FetchOrderDetail', component: FetchOrderDetail},
+        {path: '/HistoryOrder', name: 'HistoryOrder', component: HistoryOrder},
+        {path: '/HistoryOrderDetail', name: 'HistoryOrderDetail', component: HistoryOrderDetail}
       ]
-    }
+    },
   ]
 })

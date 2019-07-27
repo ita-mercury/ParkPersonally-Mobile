@@ -18,7 +18,7 @@ export default {
     },
     methods:{
         robOrder(){
-            this.$.router.push({path:'/FetchOrderDetail'})
+            this.$router.push({path:'/FetchOrderDetail'})
         }
     }
 }
