@@ -12,20 +12,20 @@
 </template>
 <script>
 export default {
-    data(){
-        return{
-        }
-    },
-    computed:{
-        getOrderList(){
-            return this.$store.state.orderList;
-        }
-    },
-    methods:{
-        robParkOrder(parkOrder){
-            this.$store.commit('robParkOrder',parkOrder)
-            // this.$store.dispatch('robParkOrder',parkOrder)
-        }
+  data () {
+    return {
     }
+  },
+  computed: {
+    getOrderList () {
+      return this.$store.state.orderList
+    }
+  },
+  methods: {
+    robParkOrder (parkOrder) {
+      this.$store.commit('robParkOrder', parkOrder)
+      // this.$store.dispatch('robParkOrder',parkOrder)
+    }
+  }
 }
 </script>

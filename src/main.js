@@ -9,7 +9,7 @@ import VueAxios from 'vue-axios'
 import store from './store/index'
 import BaiduMap from 'vue-baidu-map'
 
-import {XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell, Spinner, Card, Calendar, Tab, TabItem, Checklist, LoadingPlugin } from 'vux'
+import { XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell, Spinner, Card, Calendar, Tab, TabItem, Checklist, LoadingPlugin, Alert } from 'vux'
 
 Vue.component('x-img', XImg)
 Vue.component('x-header', XHeader)
@@ -27,6 +27,8 @@ Vue.component('calendar', Calendar)
 Vue.component('tab', Tab)
 Vue.component('tab-item', TabItem)
 Vue.component('checklist', Checklist)
+Vue.component('checklist', Checklist)
+Vue.component('alert', Alert)
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)

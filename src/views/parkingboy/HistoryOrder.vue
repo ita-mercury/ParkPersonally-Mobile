@@ -8,11 +8,11 @@
 
 <script>
 export default {
-      methods:{
-        robOrder(){
-            this.$router.push({path:'/HistoryOrderDetail'})
-        }
+  methods: {
+    robOrder () {
+      this.$router.push({path: '/HistoryOrderDetail'})
     }
+  }
 }
 </script>
 

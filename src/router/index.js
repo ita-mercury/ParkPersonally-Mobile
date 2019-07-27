@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '../views/customer/Login'
+import customerLogin from '../views/customer/Login'
+import parkingBoyLogin from '../views/parkingboy/Login'
 import Register from '../views/customer/Register'
 import Home from '../views/customer/Home'
 import CreateOrder from '../views/customer/CreateOrder'
 import PersonalCenter from '../views/customer/PersonalCenter'
+import ParkingBoyPersonalCenter from '../views/parkingboy/PersonalCenter'
 import ParkingBoyHome from '../views/parkingboy/Home'
 import ParkOrder from '../views/parkingboy/ParkOrder'
 import Order from '../views/customer/Order'
@@ -25,7 +27,12 @@ export default new Router({
     {
       path: '/customerLogin',
       name: 'customerLogin',
-      component: Login
+      component: customerLogin
+    },
+    {
+      path: '/parkingBoyLogin',
+      name: 'parkingBoyLogin',
+      component: parkingBoyLogin
     },
     {
       path: '/register',
@@ -58,7 +65,8 @@ export default new Router({
         {path: '/FetchOrder', name: 'FetchOrder', component: FetchOrder},
         {path: '/FetchOrderDetail', name: 'FetchOrderDetail', component: FetchOrderDetail},
         {path: '/HistoryOrder', name: 'HistoryOrder', component: HistoryOrder},
-        {path: '/HistoryOrderDetail', name: 'HistoryOrderDetail', component: HistoryOrderDetail}
+        {path: '/HistoryOrderDetail', name: 'HistoryOrderDetail', component: HistoryOrderDetail},
+        {path: '/ParkingBoyPersonalCenter', name: 'ParkingBoyPersonalCenter', component: ParkingBoyPersonalCenter}
       ]
     }
   ]

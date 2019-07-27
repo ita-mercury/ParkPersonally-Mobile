@@ -50,7 +50,7 @@ export default {
       })
       setTimeout(() => {
         this.$vux.loading.hide()
-        this.$router.push({name: 'personalCenter'})
+        this.$router.push({name: 'parkingBoyHome'})
       }, 500)
     },
     clearInput () {
