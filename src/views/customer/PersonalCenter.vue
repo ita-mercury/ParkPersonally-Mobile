@@ -3,6 +3,7 @@
     <div style="overflow-y: auto">
       <div class="img-div">
         <x-img class="personal-header-img" :src="imgSrc" :webp-src="`${imgSrc}?type=webp`" style="width: 60px"/>
+
       </div>
 
       <group label-width="5em" >

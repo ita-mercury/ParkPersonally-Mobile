@@ -5,21 +5,23 @@
       <x-img class="test-img" :src="imgSrc" :webp-src="`${imgSrc}?type=webp`"/>
     </div>
     <div style="width:60%;margin:15px auto; ">
-      <h2 style="margin-left: 70px">用户注册</h2>
+      <h2 style="text-align: center">用户注册</h2>
     </div>
     <div style="width: 80%; margin: 15px auto; ">
-      <group>
+      <group label-width="5em">
         <x-input title="用户名：" v-model="user.username"  name="username" placeholder="请输入用户名" ></x-input>
       </group>
-      <group>
+      <group label-width="5em">
         <x-input title="密码：" v-model="user.password" name="password" type="password" placeholder="请输入密码"></x-input>
       </group>
-      <group>
+      <group label-width="5em">
         <x-input title="确认密码：" v-model="user.confilmPassword" name="confilmPassword" type="password" placeholder="请再次输入密码"></x-input>
       </group>
       <x-button style="margin-top: 20px" plain type="primary" @click.native="handRegister">register</x-button>
       <br>
-      <router-link to="/login" style="color:#55ad2f;margin-left: 100px" >已有账号？去登录</router-link>
+      <div style="text-align: center">
+        <router-link to="/login" style="color:#55ad2f;" >已有账号？去登录</router-link>
+      </div>
     </div>
   </div>
 </template>
