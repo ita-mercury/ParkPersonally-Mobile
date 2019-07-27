@@ -11,16 +11,16 @@
 
 <script>
 export default {
-    data(){
-        return{
-            isRobbing:false
-        }
-    },
-    methods:{
-        robOrder(){
-            this.$router.push({path:'/FetchOrderDetail'})
-        }
+  data () {
+    return {
+      isRobbing: false
     }
+  },
+  methods: {
+    robOrder () {
+      this.$router.push({path: '/FetchOrderDetail'})
+    }
+  }
 }
 </script>
 

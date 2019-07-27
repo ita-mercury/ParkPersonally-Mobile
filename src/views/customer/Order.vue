@@ -46,7 +46,6 @@
         </cell>
       </group>
       <div class="temp-div"></div>
-      <div class="temp-div"></div>
     </div>
 <!--    {{customerConstants.TEST}}-->
   </div>

@@ -4,10 +4,12 @@
   margin: 0 auto;
 }
 
-.img-div{
-  margin-top: 50px;
-  width: auto;
-  text-align: center;
+.img-div .weui-cells.vux-no-group-title{
+  background: #35495e;
+}
+
+.img-div .weui-cell__ft.vux-cell-primary{
+  color: white;
 }
 
 .personal-header-img{
@@ -86,4 +88,8 @@ a{
 .weui-btn_plain-default{
   color: #35495e !important;
   border: 1px solid #35495e !important;
+}
+
+.img-div .weui-cell{
+  height: 5em ;
 }

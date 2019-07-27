@@ -2,8 +2,15 @@
   <div>
     <div style="overflow-y: auto">
       <div class="img-div">
-        <x-img class="personal-header-img" :src="imgSrc" :webp-src="`${imgSrc}?type=webp`" style="width: 60px"/>
-
+        <group label-width="5em">
+          <cell primary="content">
+            <x-img slot="title" class="personal-header-img" :src="imgSrc" style="width: 4em"/>
+            <div slot="value" style="text-align: left; margin-left: 10px">
+              <p><x-img :src="usernameImg" style="width: 0.7em"/> ITA-Mercury</p>
+              <p><x-img :src="phoneImg" style="width: 0.7em"/> 1319654275</p>
+            </div>
+          </cell>
+        </group>
       </div>
 
       <group label-width="5em" >
@@ -45,6 +52,8 @@ export default {
   data () {
     return {
       imgSrc: 'https://i.loli.net/2017/08/21/599a521472424.jpg',
+      usernameImg: require('../../assets/image/username.png'),
+      phoneImg: require('../../assets/image/phone.png')
     }
   },
   methods: {
