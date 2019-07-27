@@ -6,12 +6,9 @@ import CreateOrder from '../views/customer/CreateOrder'
 import PersonalCenter from '../views/customer/PersonalCenter'
 import ParkingBoyHome from '../views/parkingboy/Home'
 import ParkOrder from '../views/parkingboy/ParkOrder'
-<<<<<<< Updated upstream
 import Order from '../views/customer/Order'
-=======
 import FetchOrder from '../views/parkingboy/FetchOrder'
 import FetchOrderDetail from '../views/parkingboy/FetchOrderDetail'
->>>>>>> Stashed changes
 import Map from '../views/Map'
 import MyMessage from '../views/customer/MyMessage'
 
@@ -32,7 +29,6 @@ export default new Router({
         {path: '', name: 'PersonalCenter', component: PersonalCenter},
         {path: '/createOrder', name: 'createOrder', component: CreateOrder},
         {path: '/order', name: 'order', component: Order},
-        {path: '/map', name: 'map', component: Map}
         {path: '/map', name: 'map', component: Map},
         {path: '/myMessage', name: 'myMessage', component:MyMessage}
       ]
