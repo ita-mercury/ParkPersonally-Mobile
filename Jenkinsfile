@@ -11,9 +11,8 @@ pipeline {
       steps {
         sh 'systemctl stop nginx.service'
         sh 'rm  -rf /usr/share/nginx/html/*'
-        sh 'mv -f ./dist/* /usr/share/nginx/html/'
+        sh 'cp -f ./dist/* /usr/share/nginx/html/'
         sh 'systemctl start nginx.service'
-        input(message: 'It\'s ok to deploy?', ok: 'ok')
       }
     }
     stage('Deploy') {
