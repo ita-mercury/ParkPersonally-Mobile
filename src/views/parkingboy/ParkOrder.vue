@@ -2,8 +2,8 @@
     <group >
       <cell :title="'车牌号-粤C8888'"  inline-desc='南方软件园-B5'>
             <div>
-                <x-button plain type="primary" @click="robOrder" v-show="!isRobbing">抢单</x-button>
-                <spinner type="ripple" v-show="isRobbing"></spinner>
+                <x-button plain type="primary" @click.native="robOrder"  v-show="!order.isRobbing">抢单</x-button>
+                <spinner type="ripple" v-show="order.isRobbing"></spinner>
             </div>
       </cell>
     </group>
@@ -12,12 +12,15 @@
 export default {
     data(){
         return{
-            isRobbing:false
+            order:{
+                isRobbing:false
+            }
+            
         }
     },
     methods:{
         robOrder(){
-            this.isRobbing=true
+            this.order.isRobbing=true
         }
     }
 }
