@@ -45,4 +45,7 @@ export default {
 .card-padding p{
   margin:1px 0 10px 30px;
 }
+.weui-panel.weui-panel_access{
+  margin-top:0;
+}
 </style>
