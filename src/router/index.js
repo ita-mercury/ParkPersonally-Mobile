@@ -30,14 +30,14 @@ export default new Router({
         {path: '/createOrder', name: 'createOrder', component: CreateOrder},
         {path: '/order', name: 'order', component: Order},
         {path: '/map', name: 'map', component: Map},
-        {path: '/myMessage', name: 'myMessage', component:MyMessage}
+        {path: '/myMessage', name: 'myMessage', component: MyMessage}
       ]
     },
     {
-      path:'/parkingBoyHome',
-      name:'parkingBoyHome',
-      component:ParkingBoyHome,
-      children:[
+      path: '/parkingBoyHome',
+      name: 'parkingBoyHome',
+      component: ParkingBoyHome,
+      children: [
         {path: '/parkOrder', name: 'ParkOrder', component: ParkOrder},
         {path: '/FetchOrder', name: 'FetchOrder', component: FetchOrder},
         {path: '/FetchOrderDetail', name: 'FetchOrderDetail', component: FetchOrderDetail}
