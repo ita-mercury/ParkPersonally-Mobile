@@ -6,6 +6,7 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import store from './store/index'
+import BaiduMap from 'vue-baidu-map'
 import { XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell } from 'vux'
 
 Vue.component('x-img', XImg)
@@ -22,6 +23,9 @@ Vue.component('cell', Cell)
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
+Vue.use(BaiduMap, {
+  ak: 'muTqhf4nen30ClsU3rNts5F46e4EhGvl'
+})
 
 /* eslint-disable no-new */
 new Vue({

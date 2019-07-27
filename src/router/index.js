@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Home from '../views/customer/Home'
 import CreateOrder from '../views/customer/CreateOrder'
 import PersonalCenter from '../views/customer/PersonalCenter'
+import Map from '../views/Map'
 
 Vue.use(Router)
 
@@ -20,7 +21,8 @@ export default new Router({
       component: Home,
       children: [
         {path: '', name: 'PersonalCenter', component: PersonalCenter},
-        {path: '/createOrder', name: 'createOrder', component: CreateOrder}
+        {path: '/createOrder', name: 'createOrder', component: CreateOrder},
+        {path: '/map', name: 'map', component: Map}
       ]
     }
   ]

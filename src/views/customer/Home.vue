@@ -13,6 +13,10 @@
         <img slot="icon" src="../../assets/image/item3.png">
         <span slot="label">我的订单</span>
       </tabbar-item>
+      <tabbar-item link="/map">
+        <img slot="icon" src="../../assets/image/item1.png">
+        <span slot="label">百度地图</span>
+      </tabbar-item>
       <tabbar-item badge="2" link="/">
         <img slot="icon" src="../../assets/image/item4.png">
         <span slot="label">个人中心</span>
