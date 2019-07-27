@@ -7,7 +7,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import store from './store/index'
 import BaiduMap from 'vue-baidu-map'
-import { XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell } from 'vux'
+import { XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell, Spinner } from 'vux'
 
 Vue.component('x-img', XImg)
 Vue.component('x-header', XHeader)
@@ -19,7 +19,7 @@ Vue.component('actionsheet', Actionsheet)
 Vue.component('tabbar', Tabbar)
 Vue.component('tabbar-item', TabbarItem)
 Vue.component('cell', Cell)
-
+Vue.component('spinner', Spinner)
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
