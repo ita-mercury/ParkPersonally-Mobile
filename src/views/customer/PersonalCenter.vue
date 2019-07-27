@@ -2,11 +2,12 @@
   <div>
     <div style="overflow-y: auto">
       <div class="img-div">
-        <x-img class="personal-header-img" :src="imgSrc" :webp-src="`${imgSrc}?type=webp`"/>
+        <x-img class="personal-header-img" :src="imgSrc" :webp-src="`${imgSrc}?type=webp`" style="width: 60px"/>
       </div>
 
       <group label-width="5em" >
         <x-input title="姓名" name="username" placeholder="请输入姓名" is-type="china-name"></x-input>
+      </group>
       </group>
 
       <group label-width="5em">
@@ -32,8 +33,8 @@
       <group label-width="5em" title="Align-items">
         <cell primary="content" title="default" value="long long long longlong longlong longlong longlong longlong longlong longlong longlong long"></cell>
       </group>
-
       <x-button style="margin-top: 30px; width: 50%" plain type="primary">保存</x-button>
+      <router-link to="/login" > <x-button style="margin-top: 15px; width: 50%" plain type="primary">退出</x-button></router-link>
     </div>
   </div>
 </template>
@@ -47,7 +48,6 @@ export default {
     }
   },
   methods: {
-
   }
 }
 </script>
