@@ -12,7 +12,7 @@ pipeline {
         sh 'systemctl stop nginx.service'
         sh 'rm -rf /usr/share/nginx/html/*'
         sh 'cp -rf ./dist/* /usr/share/nginx/html'
-        sh 'chmod -777 /usr/share/nginx/html'
+        sh 'chmod -R -777 /usr/share/nginx/html'
         sh 'systemctl start nginx.service'
       }
     }
