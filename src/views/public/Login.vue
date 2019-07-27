@@ -9,7 +9,7 @@
     </div>
     <div style="width: 60%; margin: 15px auto; ">
       <group>
-        <x-input title="用户名：" v-model="user.username"  name="username" placeholder="请输入用户名" ></x-input>
+        <x-input title="用户名：" v-model="user.email"  name="username" placeholder="请输入用户名" ></x-input>
       </group>
       <group>
         <x-input title="密码：" v-model="user.password" name="password" type="password" placeholder="请输入密码"></x-input>
@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       user: {
-        username: '',
+        email: '',
         password: ''
       },
       menus: {
@@ -41,11 +41,12 @@ export default {
   methods: {
     submit () {
       console.log(JSON.stringify(this.user))
-      this.axios.post('/vue-demo/api/getdata', this.user).then((response) => {
-        console.log(response.data)
-      }).catch((response) => {
-        console.log(response)
-      })
+      // this.axios.post('http://localhost:8888/customers', this.user).then((response) => {
+      //   console.log(response.data)
+      // }).catch((response) => {
+      //   console.log(response)
+      // })
+      this.$router.push({name: 'personalCenter'})
     }
   }
 }

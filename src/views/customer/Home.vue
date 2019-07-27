@@ -3,6 +3,7 @@
     <x-header :left-options="{showBack: false}"><strong>ParkPersonally</strong></x-header>
     <div class="customer-content">
       <router-view></router-view>
+      <div class="temp-div"></div>
     </div>
     <tabbar>
       <tabbar-item show-dot link="/createOrder">

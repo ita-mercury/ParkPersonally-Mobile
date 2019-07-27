@@ -30,7 +30,7 @@ a{
 }
 
 .customer-content{
-  height: 80%;
+  height: 85%;
   width: 100%;
   position: absolute;
   box-sizing: border-box;
@@ -58,4 +58,8 @@ a{
 
 .weui-cells.vux-no-group-title .weui-cell_access .weui-cell__ft{
   padding-right: 30px;
+}
+
+.temp-div{
+  height: 10%
 }

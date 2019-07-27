@@ -4,8 +4,8 @@ const actions = {
   async test ({ commit }) {
     commit('test', await test())
   },
-  async robParkOrder({ commit },parkOrder){
-    commit('robParkOrder',parkOrder)
+  async robParkOrder ({ commit }, parkOrder) {
+    commit('robParkOrder', parkOrder)
   }
 }
 

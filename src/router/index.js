@@ -14,9 +14,11 @@ import HistoryOrder from '../views/parkingboy/HistoryOrder'
 import HistoryOrderDetail from '../views/parkingboy/HistoryOrderDetail'
 import Map from '../views/Map'
 import MyMessage from '../views/customer/MyMessage'
+import customerConstants from '../constants/customer'
 
 
 Vue.use(Router)
+Vue.prototype.customerConstants = customerConstants
 
 export default new Router({
   routes: [
@@ -35,7 +37,7 @@ export default new Router({
       name: 'home',
       component: Home,
       children: [
-        {path: '', name: 'PersonalCenter', component: PersonalCenter},
+        {path: '', name: 'personalCenter', component: PersonalCenter},
         {path: '/createOrder', name: 'createOrder', component: CreateOrder},
         {path: '/order', name: 'order', component: Order},
         {path: '/map', name: 'map', component: Map},
