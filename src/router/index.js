@@ -24,7 +24,7 @@ export default new Router({
         {path: '', name: 'PersonalCenter', component: PersonalCenter},
         {path: '/createOrder', name: 'createOrder', component: CreateOrder},
         {path: '/map', name: 'map', component: Map},
-        {path: '/myMessage', name: 'myMessage', component: MyMessageap}
+        {path: '/myMessage', name: 'myMessage', component:MyMessage}
       ]
     }
   ]
