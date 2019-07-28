@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = '/'
+axios.defaults.baseURL = '/api'
 axios.defaults.timeout = 15000
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
