@@ -5,13 +5,23 @@ const mutations = {
     parkOrder.isRobbing = true
   },
   postParkingOrders (state, parkingOrder) {
-    state.parkingOrder = parkingOrder
+    state.parkingOrder = parkingOrder.data
   },
   getTags (state, tags) {
-    state.tags = tags
+    state.tags = tags.data
   },
   getParkingOrders (state, parkingOrders) {
-    state.parkingOrders = parkingOrders
+    state.parkingOrders = parkingOrders.data
+  },
+  robParkingOrder (state, parkingOrder) {
+    console.log(JSON.stringify(parkingOrder.data))
+    // state.parkingOrders = parkingOrders
+  },
+  setCurrentOrder (state, parkingOrder) {
+    state.currentOrder = parkingOrder
+  },
+  setParkingLots (state, parkingLots) {
+    state.parkingLots = parkingLots
   }
 }
 

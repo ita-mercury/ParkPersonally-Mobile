@@ -12,8 +12,10 @@ const state = {
     }
   ],
   tags: [],
+  parkingLots: [],
   parkingOrders: [],
-  parkingOrder: {}
+  parkingOrder: {},
+  currentOrder: {}
 }
 
 export default state

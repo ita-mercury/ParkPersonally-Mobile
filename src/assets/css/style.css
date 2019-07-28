@@ -136,3 +136,7 @@ a{
 .tag-div .ivu-select-dropdown{
   left: 0px !important;
 }
+
+.current-order-group .weui-cell__ft{
+  text-align: left;
+}

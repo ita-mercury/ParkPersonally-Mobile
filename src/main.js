@@ -11,7 +11,7 @@ import VueAxios from 'vue-axios'
 import store from './store/index'
 import BaiduMap from 'vue-baidu-map'
 
-import { GridItem, Grid, Drawer, Selector, XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell, Spinner, Card, Calendar, Tab, TabItem, Checklist, LoadingPlugin, Alert } from 'vux'
+import { Alert, GridItem, Grid, Drawer, Selector, XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell, Spinner, Card, Calendar, Tab, TabItem, Checklist, LoadingPlugin } from 'vux'
 
 Vue.component('x-img', XImg)
 Vue.component('x-header', XHeader)

@@ -11,6 +11,7 @@ import ParkingBoyHome from '../views/parkingboy/Home'
 import ParkOrder from '../views/parkingboy/ParkOrder'
 import Order from '../views/customer/Order'
 import FetchOrder from '../views/parkingboy/FetchOrder'
+import CurrentOrder from '../views/parkingboy/CurrentOrder'
 import FetchOrderDetail from '../views/parkingboy/FetchOrderDetail'
 import HistoryOrder from '../views/parkingboy/HistoryOrder'
 import HistoryOrderDetail from '../views/parkingboy/HistoryOrderDetail'
@@ -19,10 +20,12 @@ import MyMessage from '../views/customer/MyMessage'
 import LoginAction from '../views/public/LoginAction'
 import customerConstants from '../constants/customer'
 import fetchCarAddress from '../constants/fetchCarAddress'
+import publicConstants from '../constants/public'
 
 Vue.use(Router)
 Vue.prototype.customerConstants = customerConstants
 Vue.prototype.fetchCarAddress = fetchCarAddress
+Vue.prototype.publicConstants = publicConstants
 
 export default new Router({
   routes: [
@@ -68,7 +71,8 @@ export default new Router({
         {path: '/FetchOrderDetail', name: 'FetchOrderDetail', component: FetchOrderDetail},
         {path: '/HistoryOrder', name: 'HistoryOrder', component: HistoryOrder},
         {path: '/HistoryOrderDetail', name: 'HistoryOrderDetail', component: HistoryOrderDetail},
-        {path: '/ParkingBoyPersonalCenter', name: 'ParkingBoyPersonalCenter', component: ParkingBoyPersonalCenter}
+        {path: '/ParkingBoyPersonalCenter', name: 'ParkingBoyPersonalCenter', component: ParkingBoyPersonalCenter},
+        {path: '/currentOrder', name: 'currentOrder', component: CurrentOrder}
       ]
     }
   ]
