@@ -9,7 +9,7 @@ import VueAxios from 'vue-axios'
 import store from './store/index'
 import BaiduMap from 'vue-baidu-map'
 
-import { Selector, XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell, Spinner, Card, Calendar, Tab, TabItem, Checklist, LoadingPlugin, Alert } from 'vux'
+import { GridItem, Grid, Drawer, Selector, XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell, Spinner, Card, Calendar, Tab, TabItem, Checklist, LoadingPlugin, Alert } from 'vux'
 
 Vue.component('x-img', XImg)
 Vue.component('x-header', XHeader)
@@ -30,6 +30,9 @@ Vue.component('checklist', Checklist)
 Vue.component('checklist', Checklist)
 Vue.component('alert', Alert)
 Vue.component('selector', Selector)
+Vue.component('drawer', Drawer)
+Vue.component('grid', Grid)
+Vue.component('grid-item', GridItem)
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
@@ -37,8 +40,6 @@ Vue.use(LoadingPlugin)
 Vue.use(BaiduMap, {
   ak: 'muTqhf4nen30ClsU3rNts5F46e4EhGvl'
 })
-
-axios.defaults.baseURL = '/'
 
 /* eslint-disable no-new */
 new Vue({

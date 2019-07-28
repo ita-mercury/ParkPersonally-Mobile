@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align: center">
+  <div class="login-div" style="text-align: center">
     <x-header :left-options="{backText: ''}"><strong>ParkPersonally</strong></x-header>
     <img class="parking-logo-img" :src="parkLogoImg"/>
     <div style="width: 80%; margin: 10% auto; ">

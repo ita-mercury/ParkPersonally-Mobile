@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:8888'
-axios.defaults.timeout = 5000
+axios.defaults.baseURL = '/'
+axios.defaults.timeout = 15000
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 axios.interceptors.response.use(

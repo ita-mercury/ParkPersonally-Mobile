@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div style="overflow-y: auto">
+  <div class="personal-center-div">
+    <div>
       <div class="img-div">
         <group label-width="5em">
           <cell primary="content">
@@ -12,6 +12,25 @@
           </cell>
         </group>
       </div>
+
+      <card>
+        <div slot="content" class="card-demo-flex card-demo-content01">
+          <grid :show-lr-borders="false" :show-vertical-dividers="false">
+            <grid-item>
+              <img slot="icon" src="../../assets/image/item1.png">
+              <span slot="label">test1</span>
+            </grid-item>
+            <grid-item>
+              <img slot="icon" src="../../assets/image/item2.png">
+              <span slot="label">test2</span>
+            </grid-item>
+            <grid-item>
+              <img slot="icon" src="../../assets/image/item3.png">
+              <span slot="label">test3</span>
+            </grid-item>
+          </grid>
+        </div>
+      </card>
 
       <group label-width="5em" >
         <x-input title="用户名" name="username" placeholder="请输入姓名" is-type="china-name"></x-input>
