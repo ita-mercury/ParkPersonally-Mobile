@@ -7,7 +7,7 @@
       <cell primary="content" title="交车位置" :value="fetchCarAddress.FETCH_CAR_ADDRESS[currentOrder.fetchCarAddress]"></cell>
       <cell primary="content" title="车主电话" :value="currentOrder.customer.phone"></cell>
       <cell primary="content" title="订单生成时间" :value="publicConstants.GetLocalTime(currentOrder.createTime)"></cell>
-      <cell primary="content" :value="currentOrder.customer.phone">
+      <cell primary="content" v-if="currentOrder.type === 1">
         <span slot="title">停车场</span>
         <div slot>
           <Select size="large" v-model="currentParkingLot" filterable placeholder="停车场">
@@ -18,10 +18,11 @@
           </Select>
         </div>
       </cell>
-      <x-input title="输入停车车位" name="positionNumber" type="number" v-model="positionNumber"></x-input>
+      <x-input v-if="currentOrder.type === 1" title="输入停车车位" name="positionNumber" type="number" v-model="positionNumber"></x-input>
     </group>
     <div style="width: 80%; margin: 50px auto">
-      <x-button plain type="primary" @click.native="finishParking">停车完成</x-button>
+      <x-button plain type="primary" @click.native="finishParking" v-if="currentOrder.type === 1">停车完成</x-button>
+      <x-button plain type="primary" @click.native="finishFetching" v-else>取车完成</x-button>
     </div>
   </div>
 
@@ -50,13 +51,22 @@ export default {
       }
     },
     finishParking () {
-      for (let i = 0; i < this.$store.state.parkingLots.length; i ++) {
+      for (let i = 0; i < this.$store.state.parkingLots.length; i++) {
         if (this.$store.state.parkingLots[i].id === this.currentParkingLot) {
           this.currentOrder['parkingLot'] = this.$store.state.parkingLots[i]
         }
       }
       this.currentOrder['positionNumber'] = this.positionNumber
       // console.log(JSON.stringify(this.currentOrder))
+      this.axios.put('parking-orders/' + this.currentOrder.id, this.currentOrder).then((response) => {
+        console.log(JSON.stringify(response.data))
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+
+    finishFetching () {
+      console.log(JSON.stringify(this.currentOrder))
       this.axios.put('parking-orders/' + this.currentOrder.id, this.currentOrder).then((response) => {
         console.log(JSON.stringify(response.data))
       }).catch((error) => {

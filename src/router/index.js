@@ -12,6 +12,7 @@ import ParkOrder from '../views/parkingboy/ParkOrder'
 import Order from '../views/customer/Order'
 import FetchOrder from '../views/parkingboy/FetchOrder'
 import CurrentOrder from '../views/parkingboy/CurrentOrder'
+import CustomerCurrentOrder from '../views/customer/CurrentOrder'
 import FetchOrderDetail from '../views/parkingboy/FetchOrderDetail'
 import HistoryOrder from '../views/parkingboy/HistoryOrder'
 import HistoryOrderDetail from '../views/parkingboy/HistoryOrderDetail'
@@ -58,7 +59,8 @@ export default new Router({
         {path: '/createOrder', name: 'createOrder', component: CreateOrder},
         {path: '/order', name: 'order', component: Order},
         {path: '/map', name: 'map', component: Map},
-        {path: '/myMessage', name: 'myMessage', component: MyMessage}
+        {path: '/myMessage', name: 'myMessage', component: MyMessage},
+        {path: '/customerCurrentOrder', name: 'customerCurrentOrder', component: CustomerCurrentOrder}
       ]
     },
     {

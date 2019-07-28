@@ -1,9 +1,8 @@
 <template>
     <group >
-      <cell :title="'车牌号-粤C8888'"  inline-desc='停车场A 39号'>
+      <cell :title="fetchOrder.customer.carNumber"  :inline-desc="fetchOrder.parkingLot.name + ' ' + fetchOrder.positionNumber + '号'" v-for="(fetchOrder, index) in allowRodOrders" :key="fetchOrder.id">
           <div>
-              <x-button plain type="primary" @click.native="robOrder" v-show="!isRobbing">抢单</x-button>
-              <spinner type="ripple" v-show="isRobbing"></spinner>
+            <x-button plain type="primary" @click.native="robFetchingOrder(fetchOrder.id, index)">抢单</x-button>
           </div>
       </cell>
     </group>
@@ -13,13 +12,44 @@
 export default {
   data () {
     return {
-      isRobbing: false
+      isRobbing: false,
+      allowRodOrders: []
     }
   },
   methods: {
-    robOrder () {
-      this.$router.push({path: '/FetchOrderDetail'})
+    robFetchingOrder (fetchingOrderId, index) {
+      let payload = {
+        fetchingOrderId: fetchingOrderId,
+        parkingBoy: {
+          id: 1
+        }
+      }
+      this.axios.post('parking-orders/' + payload.fetchingOrderId + '/parking-boy', payload.parkingBoy).then((response) => {
+        this.allowRodOrders.splice(index, 1)
+        this.$store.commit('setCurrentOrder', response.data)
+        this.$router.push({name: 'currentOrder'})
+      }).catch((kkkkkk) => {
+        // todo
+        // this.$vux.alert.show({
+        //   title: '抢单失败',
+        //   content: response.message
+        // })
+      })
     }
+  },
+  mounted () {
+    let payload = {
+      type: 2,
+      parkingBoyId: 1
+    }
+
+    this.$store.dispatch('getParkingOrders', payload).then((response) => {
+      this.allowRodOrders = this.$store.state.parkingOrders.filter(item => {
+        return item.status === 1
+      })
+      // console.log(JSON.stringify(this.allowRodOrders))
+    }).catch((response) => {
+    })
   }
 }
 </script>
