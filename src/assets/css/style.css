@@ -115,3 +115,24 @@ a{
 .tag-div .ivu-select-selection{
   border-radius: 0px;
 }
+
+.parking-boy-personal-center .weui-cells.vux-no-group-title {
+  margin-top: -1px;
+}
+
+.tag-div .ivu-select-selection{
+  border-left: 0;
+  border-right: 0;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.tag-div .ivu-select-input{
+  font-size: 17px;
+  color: black;
+  left: 6px;
+}
+
+.tag-div .ivu-select-dropdown{
+  left: 0px !important;
+}

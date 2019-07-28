@@ -9,6 +9,9 @@ const mutations = {
   },
   getTags (state, tags) {
     state.tags = tags
+  },
+  getParkingOrders (state, parkingOrders) {
+    state.parkingOrders = parkingOrders
   }
 }
 

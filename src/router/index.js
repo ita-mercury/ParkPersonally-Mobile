@@ -18,9 +18,11 @@ import Map from '../views/Map'
 import MyMessage from '../views/customer/MyMessage'
 import LoginAction from '../views/public/LoginAction'
 import customerConstants from '../constants/customer'
+import fetchCarAddress from '../constants/fetchCarAddress'
 
 Vue.use(Router)
 Vue.prototype.customerConstants = customerConstants
+Vue.prototype.fetchCarAddress = fetchCarAddress
 
 export default new Router({
   routes: [

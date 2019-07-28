@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="parking-boy-personal-center">
     <div style="overflow-y: auto">
       <div class="img-div">
         <group label-width="5em">

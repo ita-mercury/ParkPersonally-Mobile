@@ -12,6 +12,7 @@ const state = {
     }
   ],
   tags: [],
+  parkingOrders: [],
   parkingOrder: {}
 }
 

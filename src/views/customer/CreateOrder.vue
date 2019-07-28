@@ -35,44 +35,15 @@ export default {
         tags: [],
         type: 1,
         customer: {
-          id: 10,
-          carNumber: '4512247',
+          id: 13,
+          carNumber: '粤C-12117',
           email: '774629027@qq.com',
           password: 'adsads',
           phone: '13195641587'
         }
       },
       showAlert: false,
-      list: [{key: 'tree', value: '大榕树'}, {key: 'shop', value: '小卖部'}],
-      tagList: [{key: '1', value: '帅的'}, {key: '2', value: '高的'}],
-      cityList: [
-        {
-          value: 'New York',
-          label: 'New York'
-        },
-        {
-          value: 'London',
-          label: 'London'
-        },
-        {
-          value: 'Sydney',
-          label: 'Sydney'
-        },
-        {
-          value: 'Ottawa',
-          label: 'Ottawa'
-        },
-        {
-          value: 'Paris',
-          label: 'Paris'
-        },
-        {
-          value: 'Canberra',
-          label: 'Canberra'
-        }
-      ],
-      model11: '',
-      model12: []
+      list: []
     }
   },
   methods: {
@@ -96,6 +67,12 @@ export default {
   },
   mounted () {
     this.$store.dispatch('getTags')
+    for (let key in this.fetchCarAddress.FETCH_CAR_ADDRESS) {
+      let address = {}
+      address['key'] = key
+      address['value'] = this.fetchCarAddress.FETCH_CAR_ADDRESS[key]
+      this.list.push(address)
+    }
   }
 }
 </script>
