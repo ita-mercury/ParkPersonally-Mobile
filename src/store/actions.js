@@ -7,8 +7,8 @@ const actions = {
   async robParkOrder ({ commit }, parkOrder) {
     commit('robParkOrder', parkOrder)
   },
-  async postParkingOrders ({ commit }) {
-    commit('postParkingOrders', await postParkingOrders())
+  async postParkingOrders ({ commit }, payload) {
+    commit('postParkingOrders', await postParkingOrders(payload))
   }
 }
 
