@@ -1,4 +1,4 @@
-import { test, postParkingOrders } from '../api'
+import { test, postParkingOrders, getTags } from '../api'
 
 const actions = {
   async test ({ commit }) {
@@ -9,6 +9,9 @@ const actions = {
   },
   async postParkingOrders ({ commit }, payload) {
     commit('postParkingOrders', await postParkingOrders(payload))
+  },
+  async getTags ({ commit }) {
+    commit('getTags', await getTags())
   }
 }
 

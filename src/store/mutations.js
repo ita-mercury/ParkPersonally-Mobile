@@ -6,6 +6,9 @@ const mutations = {
   },
   postParkingOrders (state, parkingOrder) {
     state.parkingOrder = parkingOrder
+  },
+  getTags (state, tags) {
+    state.tags = tags
   }
 }
 

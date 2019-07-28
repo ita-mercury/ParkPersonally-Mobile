@@ -1,17 +1,23 @@
 <template>
   <div>
     <div>
-      <group label-width="5em">
-        <x-input title="车牌号" name="username" v-model="order.carNumber" placeholder="请输入车牌号" is-type="china-name"></x-input>
+      <group label-width="6em">
+        <x-input title="车牌号" name="username" v-model="order.customer.carNumber" placeholder="请输入车牌号"></x-input>
       </group>
 
-      <group label-width="5em">
-        <x-input title="手机号码" name="mobile" v-model="order.phone" placeholder="请输入手机号码" keyboard="number" is-type="china-mobile"></x-input>
+      <group label-width="6em">
+        <x-input title="手机号码" name="mobile" v-model="order.customer.phone" placeholder="请输入手机号码" keyboard="number" is-type="china-mobile"></x-input>
       </group>
 
-      <group>
-        <selector placeholder="请选择位置" v-model="order.fetchCarAddress" title="位置" name="fetchCarAddress" :options="list" @on-change="onChange"></selector>
+      <group label-width="6em">
+        <selector placeholder=" " v-model="order.fetchCarAddress" title="位置" name="fetchCarAddress" :options="list" @on-change="onChange"></selector>
       </group>
+
+      <div style="margin-top: 20px" class="tag-div">
+        <Select size="large" v-model="order.tags" filterable multiple placeholder="停车员标签">
+          <Option v-for="item in $store.state.tags" :value="item.id" :key="item.id">{{ item.feature }}</Option>
+        </Select>
+      </div>
 
       <x-button style="margin-top: 30px; width: 50%" plain @click.native="postParkingOrders">创建订单</x-button>
     </div>
@@ -26,32 +32,60 @@ export default {
     return {
       order: {
         fetchCarAddress: '',
+        tags: [],
         type: 1,
         customer: {
           id: 10,
           carNumber: '4512247',
           email: '774629027@qq.com',
           password: 'adsads',
-          phone: '587575'
+          phone: '13195641587'
         }
       },
       showAlert: false,
-      list: [{key: 'tree', value: '大榕树'}, {key: 'shop', value: '小卖部'}]
+      list: [{key: 'tree', value: '大榕树'}, {key: 'shop', value: '小卖部'}],
+      tagList: [{key: '1', value: '帅的'}, {key: '2', value: '高的'}],
+      cityList: [
+        {
+          value: 'New York',
+          label: 'New York'
+        },
+        {
+          value: 'London',
+          label: 'London'
+        },
+        {
+          value: 'Sydney',
+          label: 'Sydney'
+        },
+        {
+          value: 'Ottawa',
+          label: 'Ottawa'
+        },
+        {
+          value: 'Paris',
+          label: 'Paris'
+        },
+        {
+          value: 'Canberra',
+          label: 'Canberra'
+        }
+      ],
+      model11: '',
+      model12: []
     }
   },
   methods: {
     postParkingOrders () {
-      // this.$store.dispatch('postParkingOrders', this.order).then((response) => {
-      //   this.showAlert = true
-      //   console.log(JSON.stringify(response))
-      //   console.log(response.data)
-      // }).catch((response) => {
-      //   console.log(response)
-      // })
-      this.axios.post('/parking-orders', this.order).then((response) => {
+      for (let i = 0; i < this.order.tags.length; i++) {
+        for (let j = 0; j < this.$store.state.tags.length; j++) {
+          if (this.order.tags[i] === this.$store.state.tags[j].id) { this.order.tags[i] = this.$store.state.tags[j] }
+        }
+      }
+      // console.log(JSON.stringify(this.order))
+      this.$store.dispatch('postParkingOrders', this.order).then((response) => {
         this.showAlert = true
-        console.log(JSON.stringify(response))
-        console.log(response.data)
+        console.log(JSON.stringify(this.$store.state.parkingOrder))
       }).catch((response) => {
         console.log(response)
       })
@@ -59,12 +93,12 @@ export default {
     onChange (value) {
       console.log(value)
     }
+  },
+  mounted () {
+    this.$store.dispatch('getTags')
   }
 }
 </script>
 
 <style>
-  .overwrite-title-demo {
-
-  }
 </style>

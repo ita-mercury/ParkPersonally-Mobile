@@ -11,6 +11,7 @@ const state = {
       fetchCarPosition: '海怡湾畔北门'
     }
   ],
+  tags: [],
   parkingOrder: {}
 }
 

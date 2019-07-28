@@ -5,6 +5,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
 import VueAxios from 'vue-axios'
 import store from './store/index'
 import BaiduMap from 'vue-baidu-map'
@@ -37,6 +39,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
 Vue.use(LoadingPlugin)
+Vue.use(iView)
 Vue.use(BaiduMap, {
   ak: 'muTqhf4nen30ClsU3rNts5F46e4EhGvl'
 })
