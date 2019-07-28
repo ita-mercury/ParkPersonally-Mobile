@@ -41,7 +41,7 @@
         <cell primary="content" title="default" value="long long long longlong longlong longlong longlong longlong longlong longlong longlong long"></cell>
       </group>
       <x-button style="margin-top: 30px; width: 50%" plain >保存</x-button>
-      <router-link to="/" > <x-button style="margin-top: 15px; width: 50%" plain>退出</x-button></router-link>
+      <router-link to="/" > <x-button style="margin-top: 15px; width: 50%" plain>退出登录</x-button></router-link>
     </div>
   </div>
 </template>

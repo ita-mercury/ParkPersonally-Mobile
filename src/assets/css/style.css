@@ -40,7 +40,6 @@ a{
 }
 
 .customer-content .img-div{
-  margin-top: 25px;
   width: auto;
   text-align: center;
 }
@@ -92,4 +91,11 @@ a{
 
 .img-div .weui-cell{
   height: 5em ;
+}
+
+.weui-cells.vux-no-group-title{
+  margin-top: -1px;
+}
+
+div .weui-cells.vux-no-group-title:before{
 }

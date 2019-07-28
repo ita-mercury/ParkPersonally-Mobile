@@ -8,7 +8,7 @@
     <div style="overflow: auto; height: 100%">
       <group label-width="5em">
         <cell primary="content" :is-link="true">
-          <div slot="value">
+          <div slot>
             parking parking parking parking parking parking
           </div>
           <img class="park-img" slot="title" :src="parkImg"/>
@@ -21,7 +21,7 @@
       </group>
       <group label-width="5em">
         <cell primary="content" :is-link="true">
-          <div slot="value">
+          <div slot>
             parking parking parking parking parking parking
           </div>
           <img class="park-img" slot="title" :src="parkImg"/>
@@ -34,7 +34,7 @@
       </group>
       <group label-width="5em">
         <cell primary="content" :is-link="true">
-          <div slot="value">
+          <div slot>
             parking parking parking parking parking parking
           </div>
           <img class="park-img" slot="title" :src="parkImg"/>
@@ -68,18 +68,4 @@ export default {
 </script>
 
 <style>
-  .sub-item {
-    color: #888;
-  }
-  .slide {
-    padding: 0 20px;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height .5s cubic-bezier(0, 1, 0, 1) -.1s;
-  }
-  .animate {
-    max-height: 9999px;
-    transition-timing-function: cubic-bezier(0.5, 0, 1, 0);
-    transition-delay: 0s;
-  }
 </style>

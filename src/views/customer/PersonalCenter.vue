@@ -5,7 +5,7 @@
         <group label-width="5em">
           <cell primary="content">
             <x-img slot="title" class="personal-header-img" :src="imgSrc" style="width: 4em"/>
-            <div slot="value" style="text-align: left; margin-left: 10px">
+            <div slot style="text-align: left; margin-left: 10px">
               <p><x-img :src="usernameImg" style="width: 0.7em"/> ITA-Mercury</p>
               <p><x-img :src="phoneImg" style="width: 0.7em"/> 1319654275</p>
             </div>
@@ -41,7 +41,7 @@
         <cell primary="content" title="default" value="long long long longlong longlong longlong longlong longlong longlong longlong longlong long"></cell>
       </group>
       <x-button style="margin-top: 30px; width: 50%" plain >保存</x-button>
-      <router-link to="/" > <x-button style="margin-top: 15px; width: 50%" plain>退出</x-button></router-link>
+      <router-link to="/" > <x-button style="margin-top: 15px; width: 50%" plain>退出登录</x-button></router-link>
     </div>
   </div>
 </template>

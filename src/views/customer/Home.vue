@@ -2,7 +2,7 @@
   <div>
     <x-header :left-options="{showBack: false}"><strong>ParkPersonally</strong></x-header>
     <div class="customer-content">
-      <router-view></router-view>
+      <router-view class="child-view"></router-view>
       <div class="temp-div"></div>
     </div>
     <tabbar>
@@ -18,7 +18,7 @@
         <img slot="icon" src="../../assets/image/item5.png">
         <span slot="label">我的消息</span>
       </tabbar-item>
-      <tabbar-item badge="2" link="/personalCenter">
+      <tabbar-item badge="2" selected :link="{replace: true, name: 'personalCenter'}">
         <img slot="icon" src="../../assets/image/item4.png">
         <span slot="label">个人中心</span>
       </tabbar-item>
@@ -31,12 +31,13 @@
 export default {
   data () {
     return {
-
+      transitionName: 'slide-left',
+      currentItemIndex: 3
     }
   },
   methods: {
-
   }
+
 }
 </script>
 
