@@ -41,20 +41,20 @@ export default {
   },
   methods: {
     postParkingOrders () {
-      this.$store.dispatch('postParkingOrders', this.order).then((response) => {
-        this.showAlert = true
-        console.log(JSON.stringify(response))
-        console.log(response.data)
-      }).catch((response) => {
-        console.log(response)
-      })
-      // this.axios.post('/api/parking-orders', this.order).then((response) => {
+      // this.$store.dispatch('postParkingOrders', this.order).then((response) => {
       //   this.showAlert = true
       //   console.log(JSON.stringify(response))
       //   console.log(response.data)
       // }).catch((response) => {
       //   console.log(response)
       // })
+      this.axios.post('/parking-orders', this.order).then((response) => {
+        this.showAlert = true
+        console.log(JSON.stringify(response))
+        console.log(response.data)
+      }).catch((response) => {
+        console.log(response)
+      })
     },
     onChange (value) {
       console.log(value)
