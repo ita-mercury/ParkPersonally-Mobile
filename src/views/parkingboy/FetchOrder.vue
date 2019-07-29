@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { AlertModule } from 'vux'
 export default {
   data () {
     return {
@@ -28,12 +29,16 @@ export default {
         this.allowRodOrders.splice(index, 1)
         this.$store.commit('setCurrentOrder', response.data)
         this.$router.push({name: 'currentOrder'})
-      }).catch((kkkkkk) => {
+      }).catch((error) => {
         // todo
-        // this.$vux.alert.show({
-        //   title: '抢单失败',
-        //   content: response.message
-        // })
+        AlertModule.show({
+          title: '抱歉',
+          content: '抢单失败',
+          onShow () {
+          },
+          onHide () {
+          }
+        })
       })
     }
   },

@@ -1,20 +1,18 @@
 <template>
     <group >
-      <cell v-for="(parkingOrder, index) in allowRodOrders" :key="index" :title="parkingOrder.customer.carNumber"  :inline-desc="fetchCarAddress.FETCH_CAR_ADDRESS[parkingOrder.fetchCarAddress]">
+      <cell v-for="(parkingOrder, index) in allowRodOrders" :key="index" :title="parkingOrder.customer.carNumber" >
+          <div slot="inline-desc" style="margin-top: 2px">
+            <span>{{fetchCarAddress.FETCH_CAR_ADDRESS[parkingOrder.fetchCarAddress]}}</span>
+            <span style="float: right; margin-right: 10px">{{publicConstants.GetLocalTime(parkingOrder.createTime)}}</span>
+          </div>
           <div>
               <x-button plain type="primary" @click.native="robParkingOrder(parkingOrder.id, index)">抢单</x-button>
           </div>
       </cell>
-<!--      <cell v-for="( parkOrder, index) in getOrderList" v-bind:key="index" :title="parkOrder.carNumber"  :inline-desc="parkOrder.fetchCarPosition">-->
-<!--        <div>-->
-<!--          <x-button plain type="primary" @click.native="robParkOrder(parkOrder)"  v-show="!parkOrder.isRobbing">抢单</x-button>-->
-<!--          <spinner type="bubbles" v-show="parkOrder.isRobbing"></spinner>-->
-<!--          <label v-show="parkOrder.isRobbing">抢单中...</label>-->
-<!--        </div>-->
-<!--      </cell>-->
     </group>
 </template>
 <script>
+import { AlertModule } from 'vux'
 export default {
   data () {
     return {
@@ -27,11 +25,8 @@ export default {
     }
   },
   methods: {
-    robParkOrder (parkOrder) {
-      this.$store.commit('robParkOrder', parkOrder)
-      // this.$store.dispatch('robParkOrder',parkOrder)
-    },
     robParkingOrder (parkingOrderId, index) {
+      var self = this
       let payload = {
         parkingOrderId: parkingOrderId,
         parkingBoy: {
@@ -41,13 +36,28 @@ export default {
       this.axios.post('parking-orders/' + payload.parkingOrderId + '/parking-boy', payload.parkingBoy).then((response) => {
         this.allowRodOrders.splice(index, 1)
         this.$store.commit('setCurrentOrder', response.data)
-        this.$router.push({name: 'currentOrder'})
-      }).catch((kkkkkk) => {
+        AlertModule.show({
+          title: '恭喜',
+          content: '抢单成功',
+          onShow () {
+            // console.log('Module: I\'m showing')
+          },
+          onHide () {
+            // console.log('Module: I\'m hiding now')
+            self.$router.push({name: 'currentOrder'})
+          }
+        })
+      }).catch((error) => {
         // todo
-        // this.$vux.alert.show({
-        //   title: '抢单失败',
-        //   content: response.message
-        // })
+        console.log(error)
+        AlertModule.show({
+          title: '抱歉',
+          content: '抢单失败',
+          onShow () {
+          },
+          onHide () {
+          }
+        })
       })
     }
   },

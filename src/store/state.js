@@ -15,7 +15,9 @@ const state = {
   parkingLots: [],
   parkingOrders: [],
   parkingOrder: {},
-  currentOrder: {}
+  currentOrder: {},
+  showBack: false,
+  currentItemIndex: 0
 }
 
 export default state

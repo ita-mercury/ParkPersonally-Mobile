@@ -22,6 +22,12 @@ const mutations = {
   },
   setParkingLots (state, parkingLots) {
     state.parkingLots = parkingLots
+  },
+  setShowBack (state, showBack) {
+    state.showBack = showBack
+  },
+  setCurrentItemIndex (state, currentItemIndex) {
+    state.currentItemIndex = currentItemIndex
   }
 }
 

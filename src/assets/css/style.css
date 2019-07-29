@@ -140,3 +140,15 @@ a{
 .current-order-group .weui-cell__ft{
   text-align: left;
 }
+
+.comment-div .weui-cell:before{
+  border-top: 1px solid white !important;
+}
+
+.customer-content{
+  touch-action: none;
+}
+
+.comment-div textarea:disabled {
+background-color: white;
+}

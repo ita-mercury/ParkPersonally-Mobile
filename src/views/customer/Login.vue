@@ -51,7 +51,7 @@ export default {
       })
       setTimeout(() => {
         this.$vux.loading.hide()
-        this.$router.push({name: 'personalCenter'})
+        this.$router.push({name: 'createOrder'})
       }, 500)
     },
     clearInput () {

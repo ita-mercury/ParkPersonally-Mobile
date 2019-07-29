@@ -10,7 +10,8 @@
       </group>
 
       <group label-width="6em">
-        <selector placeholder=" " v-model="order.fetchCarAddress" title="位置" name="fetchCarAddress" :options="list" @on-change="onChange"></selector>
+        <selector v-model="order.fetchCarAddress" title="位置" name="fetchCarAddress" :options="list" @on-change="onChange"></selector>
+<!--        <x-input v-model="order.fetchCarAddress" title="位置" name="fetchCarAddress" placeholder="请输入地址"></x-input>-->
       </group>
 
       <div style="margin-top: 20px" class="tag-div">
@@ -65,6 +66,7 @@ export default {
           },
           onHide () {
             // console.log('Module: I\'m hiding now')
+            self.$store.commit('setCurrentItemIndex', 1)
             self.$router.push({name: 'order'})
           }
         })

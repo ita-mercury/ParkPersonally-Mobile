@@ -14,6 +14,9 @@ export default {
       show: true,
       text: '厉害了'
     }
+  },
+  mounted () {
+    this.$router.push({ name: 'loginAction' })
   }
 }
 </script>

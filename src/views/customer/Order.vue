@@ -1,19 +1,19 @@
 <template>
   <div style="height: 100%">
     <tab>
-      <tab-item selected>全部订单</tab-item>
-      <tab-item >停车订单</tab-item>
-      <tab-item >取车订单</tab-item>
+      <tab-item selected @on-item-click="selectTabItem">全部订单</tab-item>
+      <tab-item @on-item-click="selectTabItem">停车订单</tab-item>
+      <tab-item @on-item-click="selectTabItem">取车订单</tab-item>
     </tab>
     <div style="overflow: auto; height: 100%">
-      <group label-width="5em" v-for="(order, index) in orderList" :key="order.id">
+      <group label-width="5em" v-for="(order, index) in orderList" :key="order.id" v-if="order.isShow">
         <cell primary="content" :is-link="true" @click.native="selectOrder(index)">
           <div slot>
             <div style="float:left">
               <span>{{fetchCarAddress.FETCH_CAR_ADDRESS[order.fetchCarAddress]}}</span>
             </div>
             <div style="width: 30%; float:right">
-              <span :style="{color: publicConstants.OrderStatus[order.type][order.status]['color']}">{{publicConstants.OrderStatus[order.type][order.status]['text']}}</span>
+              <span :style="{color: publicConstants.OrderStatus[order.type][order.status].customerColor}">{{publicConstants.OrderStatus[order.type][order.status].customerText}}</span>
             </div>
             <div style="float:right; font-size: .8em; margin-top: 3px">
               <span>{{publicConstants.GetLocalTime(order.createTime)}}</span>
@@ -43,12 +43,44 @@ export default {
     selectOrder (index) {
       this.$store.commit('setCurrentOrder', this.orderList[index])
       this.$router.push({name: 'customerCurrentOrder'})
+    },
+    selectTabItem (index) {
+      if (index === 0) {
+        for (let i = 0; i < this.orderList.length; i++) {
+          let order = this.orderList[i]
+          order['isShow'] = true
+          this.$set(this.orderList, i, order)
+        }
+      } else if (index === 1) {
+        for (let i = 0; i < this.orderList.length; i++) {
+          let isShow = false
+          if (this.orderList[i]['type'] === 1) {
+            isShow = true
+          }
+          let order = this.orderList[i]
+          order['isShow'] = isShow
+          this.$set(this.orderList, i, order)
+        }
+      } else if (index === 2) {
+        for (let i = 0; i < this.orderList.length; i++) {
+          let isShow = false
+          if (this.orderList[i]['type'] === 2) {
+            isShow = true
+          }
+          let order = this.orderList[i]
+          order['isShow'] = isShow
+          this.$set(this.orderList, i, order)
+        }
+      }
     }
   },
   mounted () {
+    this.$store.commit('setShowBack', false)
     this.axios.get('customers/13/allOrders').then((response) => {
       this.orderList = response.data
-      // console.log(JSON.stringify(response.data))
+      for (let i = 0; i < this.orderList.length; i++) {
+        this.orderList[i]['isShow'] = true
+      }
     }).catch((error) => {
       console.log(error)
     })

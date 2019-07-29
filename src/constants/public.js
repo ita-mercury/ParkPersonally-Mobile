@@ -15,14 +15,16 @@ const GetLocalTime = function (timestamp) {
 
 const OrderStatus = {
   1: {
-    1: {text: '待接单', color: '#ff9278', operationText: '待接单', disabled: true},
-    2: {text: '待停车', color: '#4097f3', operationText: '待停车', disabled: true},
-    3: {text: '已完成', color: '#0ba90b', operationText: '我要取车', disabled: false}
+    1: {customerText: '待接单', customerColor: '#ff9278', customerOperationText: '待接单', customerDisabled: true, parkingBoyText: '待接单', parkingBoyColor: '#ff9278', parkingBoyOperationText: '待接单', parkingBoyDisabled: true},
+    2: {customerText: '待停车', customerColor: '#4097f3', customerOperationText: '待停车', customerDisabled: true, parkingBoyText: '待停车', parkingBoyColor: '#4097f3', parkingBoyOperationText: '确认停车完成', parkingBoyDisabled: false},
+    3: {customerText: '已完成', customerColor: '#0ba90b', customerOperationText: '我要取车', customerDisabled: false, parkingBoyText: '已完成', parkingBoyColor: '#0ba90b', parkingBoyOperationText: '已完成', parkingBoyDisabled: true},
+    6: {customerText: '已完成', customerColor: '#0ba90b', customerOperationText: '已申请取车', customerDisabled: true, parkingBoyText: '已完成', parkingBoyColor: '#0ba90b', parkingBoyOperationText: '已完成', parkingBoyDisabled: true}
   },
   2: {
-    1: {text: '待接单', color: '#ff9278', operationText: '待接单', disabled: true},
-    2: {text: '待取车', color: '#4097f3', operationText: '待取车', disabled: true},
-    3: {text: '已完成', color: '#0ba90b', operationText: '已完成', disabled: true}
+    1: {customerText: '待接单', customerColor: '#ff9278', customerOperationText: '待接单', customerDisabled: true, parkingBoyText: '待接单', parkingBoyColor: '#ff9278', parkingBoyOperationText: '待接单', parkingBoyDisabled: true},
+    2: {customerText: '待取车', customerColor: '#4097f3', customerOperationText: '待取车', customerDisabled: true, parkingBoyText: '待取车', parkingBoyColor: '#4097f3', parkingBoyOperationText: '确认取车完成', parkingBoyDisabled: false},
+    4: {customerText: '取车完成', customerColor: '#0ba90b', customerOperationText: '确认完成', customerDisabled: false, parkingBoyText: '等待客户确认', parkingBoyColor: '#0ba90b', parkingBoyOperationText: '等待客户确认', parkingBoyDisabled: true},
+    5: {customerText: '已完成', customerColor: '#0ba90b', customerOperationText: '已完成', customerDisabled: true, parkingBoyText: '已完成', parkingBoyColor: '#0ba90b', parkingBoyOperationText: '已完成', parkingBoyDisabled: true}
   }
 }
 
