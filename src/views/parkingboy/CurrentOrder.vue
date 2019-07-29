@@ -57,7 +57,9 @@ export default {
         }
       }
       this.currentOrder['positionNumber'] = this.positionNumber
-      // console.log(JSON.stringify(this.currentOrder))
+      console.log('===================')
+      console.log(JSON.stringify(this.currentOrder))
+      console.log('===================')
       this.axios.put('parking-orders/' + this.currentOrder.id, this.currentOrder).then((response) => {
         console.log(JSON.stringify(response.data))
       }).catch((error) => {
