@@ -18,15 +18,14 @@
           <Option v-for="item in $store.state.tags" :value="item.id" :key="item.id">{{ item.feature }}</Option>
         </Select>
       </div>
-
-      <x-button style="margin-top: 30px; width: 50%" plain @click.native="postParkingOrders">创建订单</x-button>
+      <x-button style="margin-top: 30px; width: 50%" plain @click.native="postParkingOrders" :disabled="!order.fetchCarAddress">创建订单</x-button>
     </div>
     <alert v-model="showAlert" title="恭喜" content="创建订单成功"></alert>
   </div>
 </template>
 
 <script>
-
+import { AlertModule } from 'vux'
 export default {
   data () {
     return {
@@ -48,6 +47,7 @@ export default {
   },
   methods: {
     postParkingOrders () {
+      let self = this
       for (let i = 0; i < this.order.tags.length; i++) {
         for (let j = 0; j < this.$store.state.tags.length; j++) {
           if (this.order.tags[i] === this.$store.state.tags[j].id) { this.order.tags[i] = this.$store.state.tags[j] }
@@ -55,10 +55,31 @@ export default {
       }
       // console.log(JSON.stringify(this.order))
       this.$store.dispatch('postParkingOrders', this.order).then((response) => {
-        this.showAlert = true
+        // this.showAlert = true
         console.log(JSON.stringify(this.$store.state.parkingOrder))
+        AlertModule.show({
+          title: '恭喜',
+          content: '创建订单成功',
+          onShow () {
+            // console.log('Module: I\'m showing')
+          },
+          onHide () {
+            // console.log('Module: I\'m hiding now')
+            self.$router.push({name: 'order'})
+          }
+        })
       }).catch((response) => {
         console.log(response)
+        AlertModule.show({
+          title: '抱歉',
+          content: '创建订单失败',
+          onShow () {
+            // console.log('Module: I\'m showing')
+          },
+          onHide () {
+            // console.log('Module: I\'m hiding now')
+          }
+        })
       })
     },
     onChange (value) {

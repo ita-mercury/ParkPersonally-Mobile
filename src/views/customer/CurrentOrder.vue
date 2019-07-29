@@ -13,13 +13,16 @@
       </Select>
     </div>
     <div style="width: 80%; margin: 50px auto">
-      <x-button plain type="primary" @click.native="fetchCar">我要取车</x-button>
+      <x-button plain type="primary" @click.native="fetchCar" :disabled="publicConstants.OrderStatus[currentOrder.type][currentOrder.status].disabled">
+        {{publicConstants.OrderStatus[currentOrder.type][currentOrder.status].operationText}}
+      </x-button>
     </div>
   </div>
 
 </template>
 
 <script>
+import { AlertModule } from 'vux'
 export default {
   data () {
     return {
@@ -48,6 +51,17 @@ export default {
       // console.log(JSON.stringify(order))
 
       this.axios.post('parking-orders', order).then((response) => {
+        AlertModule.show({
+          title: '恭喜',
+          content: '创建订单成功',
+          onShow () {
+            // console.log('Module: I\'m showing')
+          },
+          onHide () {
+            // console.log('Module: I\'m hiding now')
+            // self.$router.push({name: 'order'})
+          }
+        })
         console.log(JSON.stringify(response.data))
       }).catch((error) => {
         console.log(error)

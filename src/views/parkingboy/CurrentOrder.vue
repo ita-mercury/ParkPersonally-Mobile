@@ -21,7 +21,7 @@
       <x-input v-if="currentOrder.type === 1" title="输入停车车位" name="positionNumber" type="number" v-model="positionNumber"></x-input>
     </group>
     <div style="width: 80%; margin: 50px auto">
-      <x-button plain type="primary" @click.native="finishParking" v-if="currentOrder.type === 1">停车完成</x-button>
+      <x-button plain type="primary" @click.native="finishParking" v-if="currentOrder.type === 1" :disabled="!(positionNumber > 0)">停车完成</x-button>
       <x-button plain type="primary" @click.native="finishFetching" v-else>取车完成</x-button>
     </div>
   </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { AlertModule } from 'vux'
 export default {
   data () {
     return {
@@ -61,6 +62,17 @@ export default {
       console.log(JSON.stringify(this.currentOrder))
       console.log('===================')
       this.axios.put('parking-orders/' + this.currentOrder.id, this.currentOrder).then((response) => {
+        AlertModule.show({
+          title: '恭喜',
+          content: '停车完成',
+          onShow () {
+            // console.log('Module: I\'m showing')
+          },
+          onHide () {
+            // console.log('Module: I\'m hiding now')
+            // self.$router.push({name: 'order'})
+          }
+        })
         console.log(JSON.stringify(response.data))
       }).catch((error) => {
         console.log(error)
@@ -70,6 +82,17 @@ export default {
     finishFetching () {
       console.log(JSON.stringify(this.currentOrder))
       this.axios.put('parking-orders/' + this.currentOrder.id, this.currentOrder).then((response) => {
+        AlertModule.show({
+          title: '恭喜',
+          content: '取车完成',
+          onShow () {
+            // console.log('Module: I\'m showing')
+          },
+          onHide () {
+            // console.log('Module: I\'m hiding now')
+            // self.$router.push({name: 'order'})
+          }
+        })
         console.log(JSON.stringify(response.data))
       }).catch((error) => {
         console.log(error)
