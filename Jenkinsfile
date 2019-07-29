@@ -16,11 +16,5 @@ pipeline {
         sh 'systemctl start nginx.service'
       }
     }
-    stage('Deploy') {
-      steps {
-        sh 'scp -i /root/.ssh/ooclserver_rsa -r ./dist root@39.98.219.194:/usr/local/bin/'
-        sh 'ssh -i /root/.ssh/ooclserver_rsa root@39.98.219.194 "cp -rf /usr/local/bin/dist/* /usr/share/nginx/html/"'
-      }
-    }
   }
 }
