@@ -21,7 +21,6 @@
       </div>
       <x-button style="margin-top: 30px; width: 50%" plain @click.native="postParkingOrders" :disabled="!order.fetchCarAddress">创建订单</x-button>
     </div>
-    <alert v-model="showAlert" title="恭喜" content="创建订单成功"></alert>
   </div>
 </template>
 
@@ -54,32 +53,25 @@ export default {
           if (this.order.tags[i] === this.$store.state.tags[j].id) { this.order.tags[i] = this.$store.state.tags[j] }
         }
       }
-      // console.log(JSON.stringify(this.order))
       this.$store.dispatch('postParkingOrders', this.order).then((response) => {
-        // this.showAlert = true
-        console.log(JSON.stringify(this.$store.state.parkingOrder))
         AlertModule.show({
           title: '恭喜',
           content: '创建订单成功',
           onShow () {
-            // console.log('Module: I\'m showing')
           },
           onHide () {
-            // console.log('Module: I\'m hiding now')
             self.$store.commit('setCurrentItemIndex', 1)
             self.$router.push({name: 'order'})
           }
         })
-      }).catch((response) => {
-        console.log(response)
+      }).catch((error) => {
+        console.log(error)
         AlertModule.show({
-          title: '抱歉',
-          content: '创建订单失败',
+          title: '抱歉！创建订单失败',
+          content: error.response.data,
           onShow () {
-            // console.log('Module: I\'m showing')
           },
           onHide () {
-            // console.log('Module: I\'m hiding now')
           }
         })
       })

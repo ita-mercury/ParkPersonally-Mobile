@@ -87,7 +87,14 @@ export default {
         this.currentOrder = response.data
         // console.log(JSON.stringify(response.data))
       }).catch((error) => {
-        console.log(error)
+        AlertModule.show({
+          title: '抱歉！停车失败',
+          content: error.response.data,
+          onShow () {
+          },
+          onHide () {
+          }
+        })
       })
     },
 

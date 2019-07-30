@@ -41,11 +41,6 @@ export default {
   methods: {
     submit () {
       console.log(JSON.stringify(this.user))
-      // this.axios.post('http://localhost:8888/customers', this.user).then((response) => {
-      //   console.log(response.data)
-      // }).catch((response) => {
-      //   console.log(response)
-      // })
       this.$vux.loading.show({
         text: 'Loading'
       })

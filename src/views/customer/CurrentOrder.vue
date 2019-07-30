@@ -58,7 +58,14 @@ export default {
         this.currentOrder['status'] = 4
         console.log(JSON.stringify(response.data))
       }).catch((error) => {
-        console.log(error)
+        AlertModule.show({
+          title: '抱歉！创建订单失败',
+          content: error.response.data,
+          onShow () {
+          },
+          onHide () {
+          }
+        })
       })
     },
     confirmFetchedCar () {
@@ -74,7 +81,14 @@ export default {
         this.currentOrder = response.data
         console.log(response.data)
       }).catch((error) => {
-        console.log(error)
+        AlertModule.show({
+          title: '抱歉！确认订单失败',
+          content: error.response.data,
+          onShow () {
+          },
+          onHide () {
+          }
+        })
       })
     },
     submitComment () {
@@ -90,7 +104,14 @@ export default {
           }
         })
       }).catch((error) => {
-        console.log(error)
+        AlertModule.show({
+          title: '抱歉！提交评论失败',
+          content: error.response.data,
+          onShow () {
+          },
+          onHide () {
+          }
+        })
       })
     }
   },

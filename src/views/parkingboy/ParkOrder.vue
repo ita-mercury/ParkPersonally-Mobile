@@ -40,19 +40,16 @@ export default {
           title: '恭喜',
           content: '抢单成功',
           onShow () {
-            // console.log('Module: I\'m showing')
           },
           onHide () {
-            // console.log('Module: I\'m hiding now')
             self.$router.push({name: 'currentOrder'})
           }
         })
       }).catch((error) => {
         // todo
-        console.log(error)
         AlertModule.show({
           title: '抱歉',
-          content: '抢单失败',
+          content: error.response.data,
           onShow () {
           },
           onHide () {

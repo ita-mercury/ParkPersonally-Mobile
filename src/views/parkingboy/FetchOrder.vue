@@ -32,8 +32,8 @@ export default {
       }).catch((error) => {
         // todo
         AlertModule.show({
-          title: '抱歉',
-          content: '抢单失败',
+          title: '抱歉！抢单失败',
+          content: error.response.data,
           onShow () {
           },
           onHide () {
@@ -52,7 +52,6 @@ export default {
       this.allowRodOrders = this.$store.state.parkingOrders.filter(item => {
         return item.status === 1
       })
-      // console.log(JSON.stringify(this.allowRodOrders))
     }).catch((response) => {
     })
   }
