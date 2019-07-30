@@ -6,7 +6,7 @@
       <tab-item @on-item-click="selectTabItem">取车订单</tab-item>
     </tab>
     <div style="overflow: auto; height: 100%">
-      <group label-width="5em" v-for="(order, index) in orderList" :key="order.id" v-if="order.isShow">
+      <group label-width="5em" v-for="(order, index) in orderList" :key="order.id" v-if="order.isShow" :class="{'highlight-div': !publicConstants.isOrderFinished(order)}">
         <cell primary="content" :is-link="true" @click.native="selectOrder(index)">
           <div slot>
             <div class="fetch-car-address-div-span">

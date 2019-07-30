@@ -1,6 +1,6 @@
 <template>
   <div class="parking-boy-history-div">
-    <group label-width="5em" v-for="(order, index) in historyOrders" :key="order.id">
+    <group label-width="5em" v-for="(order, index) in historyOrders" :key="order.id" :class="{'highlight-div': !publicConstants.isOrderFinished(order)}">
       <cell primary="content" :is-link="true" @click.native="selectOrder(index)">
         <div slot>
           <div class="fetch-car-address-div-span">

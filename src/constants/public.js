@@ -13,6 +13,10 @@ const GetLocalTime = function (timestamp) {
   }
 }
 
+const isOrderFinished = function (order) {
+  return (order.type === 1 && order.status === 3) || (order.type === 1 && order.status === 6) || (order.type === 2 && order.status === 5)
+}
+
 const OrderStatus = {
   1: {
     1: {customerText: '待接单', customerColor: '#ff9278', customerOperationText: '等待接单', customerDisabled: true, customerShowComment: false, parkingBoyText: '待接单', parkingBoyColor: '#ff9278', parkingBoyOperationText: '待接单', parkingBoyDisabled: true},
@@ -30,5 +34,6 @@ const OrderStatus = {
 
 export default{
   GetLocalTime,
+  isOrderFinished,
   OrderStatus
 }
