@@ -82,7 +82,9 @@ export default {
         this.orderList[i]['isShow'] = true
         console.log('=========================================')
         console.log(JSON.stringify(this.publicConstants.OrderStatus))
-        console.log(this.publicConstants.OrderStatus[this.orderList.type][this.orderList.status].customerColor)
+        console.log(this.orderList[i].type)
+        console.log(this.orderList[i].status)
+        // console.log(this.publicConstants.OrderStatus[this.orderList.type][this.orderList.status].customerColor)
         console.log('=========================================')
       }
     }).catch((error) => {
