@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import customerLogin from '../views/customer/Login'
 import parkingBoyLogin from '../views/parkingboy/Login'
 import Register from '../views/customer/Register'
+import ParkingBoyRegister from '../views/parkingboy/Register'
 import Home from '../views/customer/Home'
 import CreateOrder from '../views/customer/CreateOrder'
 import PersonalCenter from '../views/customer/PersonalCenter'
@@ -13,9 +14,7 @@ import Order from '../views/customer/Order'
 import FetchOrder from '../views/parkingboy/FetchOrder'
 import CurrentOrder from '../views/parkingboy/CurrentOrder'
 import CustomerCurrentOrder from '../views/customer/CurrentOrder'
-import FetchOrderDetail from '../views/parkingboy/FetchOrderDetail'
 import HistoryOrder from '../views/parkingboy/HistoryOrder'
-import HistoryOrderDetail from '../views/parkingboy/HistoryOrderDetail'
 import Map from '../views/Map'
 import MyMessage from '../views/customer/MyMessage'
 import LoginAction from '../views/public/LoginAction'
@@ -46,6 +45,11 @@ export default new Router({
       component: Register
     },
     {
+      path: '/parkingBoyRegister',
+      name: 'parkingBoyRegister',
+      component: ParkingBoyRegister
+    },
+    {
       path: '/',
       name: 'loginAction',
       component: LoginAction
@@ -70,12 +74,11 @@ export default new Router({
       children: [
         {path: '/parkOrder', name: 'ParkOrder', component: ParkOrder},
         {path: '/FetchOrder', name: 'FetchOrder', component: FetchOrder},
-        {path: '/FetchOrderDetail', name: 'FetchOrderDetail', component: FetchOrderDetail},
         {path: '/HistoryOrder', name: 'HistoryOrder', component: HistoryOrder},
-        {path: '/HistoryOrderDetail', name: 'HistoryOrderDetail', component: HistoryOrderDetail},
         {path: '/ParkingBoyPersonalCenter', name: 'ParkingBoyPersonalCenter', component: ParkingBoyPersonalCenter},
         {path: '/currentOrder', name: 'currentOrder', component: CurrentOrder}
-      ]
+      ],
+      redirect: '/parkOrder'
     }
   ]
 })

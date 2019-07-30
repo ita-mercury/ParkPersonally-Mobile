@@ -10,8 +10,8 @@
       </group>
 
       <group label-width="6em">
-        <selector v-model="order.fetchCarAddress" title="位置" name="fetchCarAddress" :options="list" @on-change="onChange"></selector>
-<!--        <x-input v-model="order.fetchCarAddress" title="位置" name="fetchCarAddress" placeholder="请输入地址"></x-input>-->
+<!--        <selector v-model="order.fetchCarAddress" title="位置" name="fetchCarAddress" :options="list" @on-change="onChange"></selector>-->
+        <x-input v-model="order.fetchCarAddress" title="位置" name="fetchCarAddress" placeholder="请输入地址"></x-input>
       </group>
 
       <div style="margin-top: 20px" class="tag-div">
@@ -65,7 +65,6 @@ export default {
           }
         })
       }).catch((error) => {
-        console.log(error)
         AlertModule.show({
           title: '抱歉！创建订单失败',
           content: error.response.data,
@@ -77,17 +76,11 @@ export default {
       })
     },
     onChange (value) {
-      console.log(value)
     }
   },
   mounted () {
+    this.$store.commit('setHeaderText', '我要停车')
     this.$store.dispatch('getTags')
-    for (let key in this.fetchCarAddress.FETCH_CAR_ADDRESS) {
-      let address = {}
-      address['key'] = key
-      address['value'] = this.fetchCarAddress.FETCH_CAR_ADDRESS[key]
-      this.list.push(address)
-    }
   }
 }
 </script>

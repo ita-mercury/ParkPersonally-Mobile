@@ -43,6 +43,7 @@ export default {
     }
   },
   mounted () {
+    this.$store.commit('setHeaderText', '取车订单')
     let payload = {
       type: 2,
       parkingBoyId: 1

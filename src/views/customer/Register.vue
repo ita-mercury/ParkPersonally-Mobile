@@ -1,6 +1,6 @@
 <template>
   <div class="register-div" style="text-align: center">
-    <x-header :left-options="{backText: ''}"><strong>ParkPersonally</strong></x-header>
+    <x-header :left-options="{backText: ''}"><strong>{{$store.state.headerText}}</strong></x-header>
     <img class="parking-logo-img" :src="parkLogoImg"/>
     <div style="width: 80%; margin: 10% auto; ">
       <group label-width="5em">
@@ -42,13 +42,13 @@ export default {
   },
   methods: {
     handRegister () {
-      console.log(JSON.stringify(this.user))
       this.axios.post('/vue-demo/api/getdata', this.user).then((response) => {
-        console.log(response.data)
       }).catch((response) => {
-        console.log(response)
       })
     }
+  },
+  mounted () {
+    this.$store.commit('setHeaderText', '用户注册')
   }
 }
 </script>

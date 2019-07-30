@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="parking-boy-history-div">
     <group label-width="5em" v-for="(order, index) in historyOrders" :key="order.id">
       <cell primary="content" :is-link="true" @click.native="selectOrder(index)">
         <div slot>
-          <div style="float:left">
-            <span>{{fetchCarAddress.FETCH_CAR_ADDRESS[order.fetchCarAddress]}}</span>
+          <div class="fetch-car-address-div-span">
+            <span>{{order.fetchCarAddress}}</span>
           </div>
           <div style="width: 30%; float:right">
             <span :style="{color: publicConstants.OrderStatus[order.type][order.status].parkingBoyColor}">{{publicConstants.OrderStatus[order.type][order.status].parkingBoyText}}</span>
@@ -36,10 +36,10 @@ export default {
     }
   },
   mounted () {
+    this.$store.commit('setHeaderText', '历史订单')
     this.axios.get('/parking-boys/1/parking-orders').then((response) => {
       this.historyOrders = response.data
     }).catch((error) => {
-      console.log(error)
     })
   }
 }

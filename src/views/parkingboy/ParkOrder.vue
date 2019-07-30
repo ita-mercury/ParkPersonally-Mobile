@@ -2,7 +2,7 @@
     <group >
       <cell v-for="(parkingOrder, index) in allowRodOrders" :key="index" :title="parkingOrder.customer.carNumber" >
           <div slot="inline-desc" style="margin-top: 2px">
-            <span>{{fetchCarAddress.FETCH_CAR_ADDRESS[parkingOrder.fetchCarAddress]}}</span>
+            <span>{{parkingOrder.fetchCarAddress}}</span>
             <span style="float: right; margin-right: 10px">{{publicConstants.GetLocalTime(parkingOrder.createTime)}}</span>
           </div>
           <div>
@@ -46,7 +46,6 @@ export default {
           }
         })
       }).catch((error) => {
-        // todo
         AlertModule.show({
           title: '抱歉',
           content: error.response.data,
@@ -59,6 +58,7 @@ export default {
     }
   },
   mounted () {
+    this.$store.commit('setHeaderText', '停车订单')
     let payload = {
       type: 1,
       parkingBoyId: 1

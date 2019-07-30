@@ -57,6 +57,9 @@ export default {
     }
   },
   methods: {
+  },
+  mounted () {
+    this.$store.commit('setHeaderText', '个人中心')
   }
 }
 </script>

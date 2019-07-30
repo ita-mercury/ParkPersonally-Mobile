@@ -1,6 +1,6 @@
 <template>
   <div class="login-div" style="text-align: center">
-    <x-header :left-options="{backText: ''}"><strong>ParkPersonally</strong></x-header>
+    <x-header :left-options="{backText: ''}"><strong>{{$store.state.headerText}}</strong></x-header>
     <img class="parking-logo-img" :src="parkLogoImg"/>
     <div style="width: 80%; margin: 10% auto; ">
       <group label-width="5em">
@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     submit () {
-      console.log(JSON.stringify(this.user))
       this.$vux.loading.show({
         text: 'Loading'
       })
@@ -52,6 +51,9 @@ export default {
     clearInput () {
       alert('asd')
     }
+  },
+  mounted () {
+    this.$store.commit('setHeaderText', '用户登录')
   }
 }
 </script>

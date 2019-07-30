@@ -17,7 +17,8 @@ const state = {
   parkingOrder: {},
   currentOrder: {},
   showBack: false,
-  currentItemIndex: 0
+  currentItemIndex: 0,
+  headerText: 'ParkPersonally'
 }
 
 export default state

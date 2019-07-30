@@ -1,11 +1,11 @@
 <template>
   <div>
-    <x-header  :left-options="{showBack: false}"><strong>ParkPersonally</strong></x-header>
+    <x-header  :left-options="{showBack: false}"><strong>{{$store.state.headerText}}</strong></x-header>
     <div class="customer-content">
       <router-view></router-view>
       <div class="temp-div"></div>
     </div>
-    <tabbar>
+    <tabbar class="parking-boy-home-tabbar" v-model="$store.state.currentItemIndex">
       <tabbar-item show-dot link="/parkOrder">
         <img slot="icon" src="../../assets/image/item1.png">
         <span slot="label">停车</span>

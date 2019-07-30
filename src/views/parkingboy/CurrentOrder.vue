@@ -4,7 +4,7 @@
       <cell primary="content" title="订单编号" :value="currentOrder.id"></cell>
       <cell primary="content" title="订单类型" :value="getType(currentOrder.type)"></cell>
       <cell primary="content" title="车牌号" :value="currentOrder.customer.carNumber"></cell>
-      <cell primary="content" title="交车位置" :value="fetchCarAddress.FETCH_CAR_ADDRESS[currentOrder.fetchCarAddress]"></cell>
+      <cell primary="content" title="交车位置" :value="currentOrder.fetchCarAddress"></cell>
       <cell primary="content" title="车主电话" :value="currentOrder.customer.phone"></cell>
       <cell primary="content" title="订单生成时间" :value="publicConstants.GetLocalTime(currentOrder.createTime)"></cell>
       <cell primary="content" v-if="currentOrder.type === 1">
@@ -26,15 +26,6 @@
         {{publicConstants.OrderStatus[currentOrder.type][currentOrder.status].parkingBoyOperationText}}
       </x-button>
     </div>
-    <div class="comment-div" v-if="currentOrder.comment !== null">
-      <group>
-        <cell>
-          <span slot="title">评价</span>
-          <rater :disabled="true" v-model="currentOrder.comment.rate"></rater>
-        </cell>
-        <x-textarea placeholder="无任何评价" v-model="currentOrder.comment.content"></x-textarea>
-      </group>
-    </div>
   </div>
 
 </template>
@@ -45,11 +36,6 @@ export default {
   data () {
     return {
       currentOrder: this.$store.state.currentOrder,
-      // currentOrder: {
-      //   id: 1,
-      //   type: 1,
-      //   customer: {}
-      // },
       currentParkingLot: 1,
       positionNumber: 0
     }
@@ -69,23 +55,16 @@ export default {
         }
       }
       this.currentOrder['positionNumber'] = this.positionNumber
-      console.log('===================')
-      console.log(JSON.stringify(this.currentOrder))
-      console.log('===================')
       this.axios.put('parking-orders/' + this.currentOrder.id, this.currentOrder).then((response) => {
         AlertModule.show({
           title: '恭喜',
           content: '停车完成',
           onShow () {
-            // console.log('Module: I\'m showing')
           },
           onHide () {
-            // console.log('Module: I\'m hiding now')
-            // self.$router.push({name: 'order'})
           }
         })
         this.currentOrder = response.data
-        // console.log(JSON.stringify(response.data))
       }).catch((error) => {
         AlertModule.show({
           title: '抱歉！停车失败',
@@ -99,32 +78,25 @@ export default {
     },
 
     finishFetching () {
-      console.log(JSON.stringify(this.currentOrder))
       this.axios.put('parking-orders/' + this.currentOrder.id, this.currentOrder).then((response) => {
         this.currentOrder = response.data
         AlertModule.show({
           title: '恭喜',
           content: '取车完成',
           onShow () {
-            // console.log('Module: I\'m showing')
           },
           onHide () {
-            // console.log('Module: I\'m hiding now')
-            // self.$router.push({name: 'order'})
           }
         })
-        console.log(JSON.stringify(response.data))
       }).catch((error) => {
-        console.log(error)
       })
     }
   },
   mounted () {
-    console.log(JSON.stringify(this.currentOrder))
+    this.$store.commit('setHeaderText', '订单详情')
     this.axios.get('parking-boys/1/parking-lots').then((response) => {
       this.$store.commit('setParkingLots', response.data)
     }).catch((error) => {
-      console.log(error)
     })
   }
 }

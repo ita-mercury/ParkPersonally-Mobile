@@ -9,8 +9,8 @@
       <group label-width="5em" v-for="(order, index) in orderList" :key="order.id" v-if="order.isShow">
         <cell primary="content" :is-link="true" @click.native="selectOrder(index)">
           <div slot>
-            <div style="float:left">
-              <span>{{fetchCarAddress.FETCH_CAR_ADDRESS[order.fetchCarAddress]}}</span>
+            <div class="fetch-car-address-div-span">
+              <span>{{order.fetchCarAddress}}</span>
             </div>
             <div style="width: 30%; float:right">
               <span :style="{color: publicConstants.OrderStatus[order.type][order.status].customerColor}">{{publicConstants.OrderStatus[order.type][order.status].customerText}}</span>
@@ -75,24 +75,18 @@ export default {
     }
   },
   mounted () {
+    this.$store.commit('setHeaderText', '我的订单')
     this.$store.commit('setShowBack', false)
     this.axios.get('customers/13/allOrders').then((response) => {
       this.orderList = response.data
       for (let i = 0; i < this.orderList.length; i++) {
         this.orderList[i]['isShow'] = true
-        console.log('=========================================')
-        console.log(JSON.stringify(this.publicConstants.OrderStatus))
-        console.log(this.orderList[i].type)
-        console.log(this.orderList[i].status)
-        // console.log(this.publicConstants.OrderStatus[this.orderList.type][this.orderList.status].customerColor)
-        console.log('=========================================')
       }
     }).catch((error) => {
-      console.log(error)
     })
   }
 }
 </script>
 
-<style>
+<style scoped>
 </style>

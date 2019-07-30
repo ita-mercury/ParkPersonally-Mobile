@@ -13,10 +13,6 @@ const mutations = {
   getParkingOrders (state, parkingOrders) {
     state.parkingOrders = parkingOrders.data
   },
-  robParkingOrder (state, parkingOrder) {
-    console.log(JSON.stringify(parkingOrder.data))
-    // state.parkingOrders = parkingOrders
-  },
   setCurrentOrder (state, parkingOrder) {
     state.currentOrder = parkingOrder
   },
@@ -28,6 +24,9 @@ const mutations = {
   },
   setCurrentItemIndex (state, currentItemIndex) {
     state.currentItemIndex = currentItemIndex
+  },
+  setHeaderText (state, headerText) {
+    state.headerText = headerText
   }
 }
 

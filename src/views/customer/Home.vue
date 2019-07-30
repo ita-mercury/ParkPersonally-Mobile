@@ -1,6 +1,6 @@
 <template>
   <div>
-    <x-header :left-options="{showBack: $store.state.showBack}"><strong>ParkPersonally</strong></x-header>
+    <x-header :left-options="{showBack: $store.state.showBack}"><strong>{{$store.state.headerText}}</strong></x-header>
     <div class="customer-content">
       <router-view class="child-view"></router-view>
       <div class="temp-div"></div>

@@ -1,6 +1,6 @@
 <template>
   <div class="login-div" style="text-align: center">
-    <x-header :left-options="{backText: ''}"><strong>ParkPersonally</strong></x-header>
+    <x-header :left-options="{backText: ''}"><strong>{{$store.state.headerText}}</strong></x-header>
     <img class="parking-logo-img" :src="parkLogoImg"/>
     <div style="width: 80%; margin: 10% auto; ">
       <group label-width="5em">
@@ -12,7 +12,7 @@
       <x-button style="margin-top: 30px;" plain @click.native="submit">login</x-button>
       <br>
       <div style="text-align: center">
-        <router-link to="/register" style="color:#35495e;">没有账号？去注册</router-link>
+        <router-link to="/parkingBoyRegister" style="color:#35495e;">没有账号？去注册</router-link>
       </div>
     </div>
   </div>
@@ -39,12 +39,6 @@ export default {
   },
   methods: {
     submit () {
-      console.log(JSON.stringify(this.user))
-      // this.axios.post('http://localhost:8888/customers', this.user).then((response) => {
-      //   console.log(response.data)
-      // }).catch((response) => {
-      //   console.log(response)
-      // })
       this.$vux.loading.show({
         text: 'Loading'
       })
@@ -56,6 +50,9 @@ export default {
     clearInput () {
       alert('asd')
     }
+  },
+  mounted () {
+    this.$store.commit('setHeaderText', '停车员登录')
   }
 }
 </script>

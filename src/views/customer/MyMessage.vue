@@ -31,6 +31,9 @@ export default {
   },
   methods: {
 
+  },
+  mounted () {
+    this.$store.commit('setHeaderText', '我的消息')
   }
 }
 </script>
