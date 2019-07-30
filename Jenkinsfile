@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'cnpm install'
+        sh 'npm run lint'
         sh 'npm run build'
       }
     }
