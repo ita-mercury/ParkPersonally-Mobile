@@ -89,6 +89,14 @@ export default {
           }
         })
       }).catch((error) => {
+        AlertModule.show({
+          title: '抱歉！取车失败',
+          content: error.response.data,
+          onShow () {
+          },
+          onHide () {
+          }
+        })
       })
     }
   },
@@ -96,7 +104,6 @@ export default {
     this.$store.commit('setHeaderText', '订单详情')
     this.axios.get('parking-boys/1/parking-lots').then((response) => {
       this.$store.commit('setParkingLots', response.data)
-    }).catch((error) => {
     })
   }
 }

@@ -82,7 +82,6 @@ export default {
       for (let i = 0; i < this.orderList.length; i++) {
         this.orderList[i]['isShow'] = true
       }
-    }).catch((error) => {
     })
   }
 }

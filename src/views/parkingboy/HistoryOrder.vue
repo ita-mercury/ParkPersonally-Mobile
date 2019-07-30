@@ -39,7 +39,6 @@ export default {
     this.$store.commit('setHeaderText', '历史订单')
     this.axios.get('/parking-boys/1/parking-orders').then((response) => {
       this.historyOrders = response.data
-    }).catch((error) => {
     })
   }
 }
