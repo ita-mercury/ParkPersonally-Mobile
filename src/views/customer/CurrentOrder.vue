@@ -73,7 +73,7 @@ export default {
       for (let i = 0; i < this.currentOrder.tags.length; i++) {
         let tag = {}
         tag['id'] = this.currentOrder.tags[i]
-        req.push(tag)
+        req['tags'].push(tag)
       }
       this.axios.post('parking-orders', req).then((response) => {
         AlertModule.show({

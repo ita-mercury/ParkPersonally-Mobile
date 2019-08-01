@@ -11,7 +11,7 @@ import VueAxios from 'vue-axios'
 import store from './store/index'
 import BaiduMap from 'vue-baidu-map'
 
-import { XTextarea, Rater, Alert, GridItem, Grid, Drawer, Selector, XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell, Spinner, Card, Calendar, Tab, TabItem, Checklist, LoadingPlugin } from 'vux'
+import { Scroller, XTextarea, Rater, Alert, GridItem, Grid, Drawer, Selector, XHeader, XImg, Loading, XInput, Group, XButton, Actionsheet, Tabbar, TabbarItem, Cell, Spinner, Card, Calendar, Tab, TabItem, Checklist, LoadingPlugin } from 'vux'
 
 Vue.component('x-img', XImg)
 Vue.component('x-header', XHeader)
@@ -37,6 +37,7 @@ Vue.component('grid', Grid)
 Vue.component('grid-item', GridItem)
 Vue.component('rater', Rater)
 Vue.component('x-textarea', XTextarea)
+Vue.component('scroller', Scroller)
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
