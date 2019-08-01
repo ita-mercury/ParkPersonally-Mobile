@@ -1,31 +1,36 @@
 <template>
   <div>
-    <group label-width="7em" class="current-order-group">
-      <cell primary="content" title="订单编号" :value="currentOrder.id"></cell>
-      <cell primary="content" title="订单类型" :value="getType(currentOrder.type)"></cell>
-      <cell primary="content" title="车牌号" :value="currentOrder.customer.carNumber"></cell>
-      <cell primary="content" title="交车位置" :value="currentOrder.fetchCarAddress"></cell>
-      <cell primary="content" title="车主电话" :value="currentOrder.customer.phone"></cell>
-      <cell primary="content" title="订单生成时间" :value="publicConstants.GetLocalTime(currentOrder.createTime)"></cell>
-      <cell primary="content" v-if="currentOrder.type === 1">
-        <span slot="title">停车场</span>
-        <div slot>
-          <Select size="large" v-model="currentParkingLot" filterable placeholder="停车场">
-            <Option v-for="parkingLot in $store.state.parkingLots" :value="parkingLot.id" :key="parkingLot.id">
-              {{ parkingLot.name }}
-              <span style="color: red">({{parkingLot.restCapacity}})</span>
-            </Option>
-          </Select>
+    <scroller class="scroller" use-pulldown :pulldown-config="pulldownDefaultConfig" @on-pulldown-loading="refresh"
+              lock-x ref="scrollerBottom" height="-48">
+      <div>
+        <group label-width="7em" class="current-order-group">
+          <cell primary="content" title="订单编号" :value="currentOrder.id"></cell>
+          <cell primary="content" title="订单类型" :value="getType(currentOrder.type)"></cell>
+          <cell primary="content" title="车牌号" :value="currentOrder.customer.carNumber"></cell>
+          <cell primary="content" title="交车位置" :value="currentOrder.fetchCarAddress"></cell>
+          <cell primary="content" title="车主电话" :value="currentOrder.customer.phone"></cell>
+          <cell primary="content" title="订单生成时间" :value="publicConstants.GetLocalTime(currentOrder.createTime)"></cell>
+          <cell primary="content" v-if="currentOrder.type === 1">
+            <span slot="title">停车场</span>
+            <div slot>
+              <Select size="large" v-model="currentParkingLot" filterable placeholder="停车场">
+                <Option v-for="parkingLot in $store.state.parkingLots" :value="parkingLot.id" :key="parkingLot.id">
+                  {{ parkingLot.name }}
+                  <span style="color: red">({{parkingLot.restCapacity}})</span>
+                </Option>
+              </Select>
+            </div>
+          </cell>
+          <x-input v-if="currentOrder.type === 1" title="输入停车车位" name="positionNumber" type="number" v-model="positionNumber"></x-input>
+        </group>
+        <div style="width: 80%; margin: 50px auto">
+          <x-button plain type="primary" @click.native="finishParking" v-if="currentOrder.type === 1" :disabled="!(positionNumber > 0) || publicConstants.OrderStatus[currentOrder.type][currentOrder.status].parkingBoyDisabled">{{publicConstants.OrderStatus[currentOrder.type][currentOrder.status].parkingBoyOperationText}}</x-button>
+          <x-button plain type="primary" @click.native="finishFetching" :disabled="publicConstants.OrderStatus[currentOrder.type][currentOrder.status].parkingBoyDisabled" v-else>
+            {{publicConstants.OrderStatus[currentOrder.type][currentOrder.status].parkingBoyOperationText}}
+          </x-button>
         </div>
-      </cell>
-      <x-input v-if="currentOrder.type === 1" title="输入停车车位" name="positionNumber" type="number" v-model="positionNumber"></x-input>
-    </group>
-    <div style="width: 80%; margin: 50px auto">
-      <x-button plain type="primary" @click.native="finishParking" v-if="currentOrder.type === 1" :disabled="!(positionNumber > 0) || publicConstants.OrderStatus[currentOrder.type][currentOrder.status].parkingBoyDisabled">{{publicConstants.OrderStatus[currentOrder.type][currentOrder.status].parkingBoyOperationText}}</x-button>
-      <x-button plain type="primary" @click.native="finishFetching" :disabled="publicConstants.OrderStatus[currentOrder.type][currentOrder.status].parkingBoyDisabled" v-else>
-        {{publicConstants.OrderStatus[currentOrder.type][currentOrder.status].parkingBoyOperationText}}
-      </x-button>
-    </div>
+      </div>
+    </scroller>
   </div>
 
 </template>
@@ -37,7 +42,16 @@ export default {
     return {
       currentOrder: this.$store.state.currentOrder,
       currentParkingLot: 1,
-      positionNumber: 0
+      positionNumber: 0,
+      pulldownDefaultConfig: {
+        content: '下拉刷新',
+        height: 50,
+        autoRefresh: false,
+        downContent: '下拉刷新',
+        upContent: '释放后刷新',
+        loadingContent: '正在刷新...',
+        clsPrefix: 'xs-plugin-pulldown-'
+      }
     }
   },
   methods: {
@@ -97,6 +111,13 @@ export default {
           onHide () {
           }
         })
+      })
+    },
+
+    refresh () {
+      this.axios.get('/parking-orders/' + this.currentOrder.id).then((response) => {
+        this.currentOrder = response.data
+        this.$refs.scrollerBottom.reset({top: 0})
       })
     }
   },

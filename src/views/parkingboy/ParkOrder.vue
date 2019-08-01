@@ -1,22 +1,38 @@
 <template>
-    <group >
-      <cell v-for="(parkingOrder, index) in allowRodOrders" :key="index" :title="parkingOrder.customer.carNumber" >
-          <div slot="inline-desc" style="margin-top: 2px">
-            <span>{{parkingOrder.fetchCarAddress}}</span>
-            <span style="float: right; margin-right: 10px">{{publicConstants.GetLocalTime(parkingOrder.createTime)}}</span>
-          </div>
-          <div>
+  <div>
+    <scroller use-pulldown :pulldown-config="pulldownDefaultConfig" @on-pulldown-loading="refresh"
+              lock-x ref="scrollerBottom" height="-48">
+      <div>
+        <group >
+          <cell v-for="(parkingOrder, index) in allowRodOrders" :key="index" :title="parkingOrder.customer.carNumber" >
+            <div slot="inline-desc" style="margin-top: 2px">
+              <span>{{parkingOrder.fetchCarAddress}}</span>
+              <span style="float: right; margin-right: 10px">{{publicConstants.GetLocalTime(parkingOrder.createTime)}}</span>
+            </div>
+            <div>
               <x-button plain type="primary" @click.native="robParkingOrder(parkingOrder.id, index)">抢单</x-button>
-          </div>
-      </cell>
-    </group>
+            </div>
+          </cell>
+        </group>
+      </div>
+    </scroller>
+  </div>
 </template>
 <script>
 import { AlertModule } from 'vux'
 export default {
   data () {
     return {
-      allowRodOrders: []
+      allowRodOrders: [],
+      pulldownDefaultConfig: {
+        content: '下拉刷新',
+        height: 50,
+        autoRefresh: false,
+        downContent: '下拉刷新',
+        upContent: '释放后刷新',
+        loadingContent: '正在刷新...',
+        clsPrefix: 'xs-plugin-pulldown-'
+      }
     }
   },
   computed: {
@@ -54,6 +70,20 @@ export default {
           onHide () {
           }
         })
+      })
+    },
+    refresh () {
+      let payload = {
+        type: 1,
+        parkingBoyId: 1
+      }
+
+      this.$store.dispatch('getParkingOrders', payload).then((response) => {
+        this.allowRodOrders = this.$store.state.parkingOrders.filter(item => {
+          return item.status === 1
+        })
+        this.$refs.scrollerBottom.reset({top: 0})
+      }).catch((response) => {
       })
     }
   },

@@ -27,7 +27,7 @@ export default {
       user: {
         name: 'a123456',
         role: 'customer',
-        email: '',
+        email: 'a123456',
         password: '123456'
       },
       menus: {

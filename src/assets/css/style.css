@@ -175,3 +175,7 @@ background-color: white;
 .highlight-div {
   -webkit-box-shadow: 0 0 7px #0071F1;
 }
+
+.currentOrder-div .scroller{
+  height: 800px !important;
+}
