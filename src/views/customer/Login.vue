@@ -4,10 +4,10 @@
     <img class="parking-logo-img" :src="parkLogoImg"/>
     <div style="width: 80%; margin: 10% auto; ">
       <group label-width="5em">
-        <x-input title="用户名：" v-model="user.email"  name="email" placeholder="请输入用户名" ></x-input>
+        <x-input id="customerEmailInput" title="用户名：" v-model="user.email"  name="email" placeholder="请输入用户名" ></x-input>
       </group>
       <group label-width="5em">
-        <x-input title="密码：" v-model="user.password" name="password" type="password" placeholder="请输入密码"></x-input>
+        <x-input id="customerPasswordInput" title="密码：" v-model="user.password" name="password" type="password" placeholder="请输入密码"></x-input>
       </group>
       <x-button style="margin-top: 30px;" plain @click.native="submit">login</x-button>
       <br>
