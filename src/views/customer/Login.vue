@@ -25,8 +25,10 @@ export default {
   data () {
     return {
       user: {
+        name: 'a123456',
+        role: 'customer',
         email: '',
-        password: ''
+        password: '123456'
       },
       menus: {
         menu1: 'Take Photo',
@@ -43,10 +45,14 @@ export default {
       this.$vux.loading.show({
         text: 'Loading'
       })
-      setTimeout(() => {
+      this.axios.post('token', this.user).then((response) => {
+        this.axios.defaults.headers.common['Authorization'] = response.data
+        // console.log(response.data)
         this.$vux.loading.hide()
         this.$router.push({name: 'createOrder'})
-      }, 500)
+      }).catch(() => {
+        this.$vux.loading.hide()
+      })
     },
     clearInput () {
       alert('asd')

@@ -7,6 +7,14 @@
       <cell primary="content" title="停车场" :value="currentOrder.parkingLot.name" v-if="currentOrder.parkingLot !== null"></cell>
       <cell primary="content" title="停车场" value="" v-if="currentOrder.parkingLot === null"></cell>
       <cell primary="content" title="停车车位" :value="currentOrder.positionNumber"></cell>
+
+      <cell primary="content" title="停车场" :value="currentOrder.parkingLot.name" v-if="currentOrder.parkingLot !== null"></cell>
+      <cell primary="content" title="停车场" value="" v-if="currentOrder.parkingLot === null"></cell>
+
+      <cell primary="content" title="停车员编号" v-if="currentOrder.parkingBoy !== null && currentOrder.type === 1" :value="currentOrder.parkingBoy.number"></cell>
+      <cell primary="content" title="停车员手机号" v-if="currentOrder.parkingBoy !== null && currentOrder.type === 1" :value="currentOrder.parkingBoy.phone"></cell>
+      <cell primary="content" title="取车员编号" v-if="currentOrder.parkingBoy !== null && currentOrder.type === 2" :value="currentOrder.parkingBoy.number"></cell>
+      <cell primary="content" title="取车员手机号" v-if="currentOrder.parkingBoy !== null && currentOrder.type === 2" :value="currentOrder.parkingBoy.phone"></cell>
     </group>
     <div style="margin-top: 20px" class="tag-div" v-if="currentOrder.type  === 1 && currentOrder.status === 3">
       <Select size="large" v-model="currentOrder.tags" filterable multiple placeholder="停车员标签">
@@ -60,7 +68,14 @@ export default {
   },
   methods: {
     fetchCar () {
-      this.axios.post('parking-orders', this.currentOrder).then((response) => {
+      let req = JSON.parse(JSON.stringify(this.currentOrder))
+      req['tags'] = []
+      for (let i = 0; i < this.currentOrder.tags.length; i++) {
+        let tag = {}
+        tag['id'] = this.currentOrder.tags[i]
+        req.push(tag)
+      }
+      this.axios.post('parking-orders', req).then((response) => {
         AlertModule.show({
           title: '恭喜',
           content: '创建订单成功',
